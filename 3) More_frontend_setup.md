@@ -6,3 +6,6 @@ https://medium.com/@sqnguyen829/setting-up-multiple-reducers-for-react-redux-3d6
 for the routers to be used
 
 npm install --save react-router-dom
+
+thunk allows us to fetch data asyncronously
+npm install --save redux-thunk
