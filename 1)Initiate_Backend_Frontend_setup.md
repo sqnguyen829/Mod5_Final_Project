@@ -11,13 +11,16 @@ We will be using Redux, so cd into the frondend folder and run  [ npm install --
 now we will get rid of the github repo that came along with creating the app folder from both rails and react. cd into their respective folders and run [ rm -rf .git ]. Now we can link it up with our repo from github. So cd out to the main folder of the app.
 
 git init
+
 git add .
+
 git commit -m "frontend and backend folder made"
 
 Before we push make sure we have a repo ready in github to push to.
 Once that is made we use
 
 git remote add origin https://github.com/sqnguyen829/Mod5_Final_Project.git
+
 git push -u origin master
 
 
