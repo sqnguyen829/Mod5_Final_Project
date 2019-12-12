@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { handleNewUser } from '../actions'
 
 function Signup() {
     return(
         <div className="ui inverted segment">
             <div className="ui inverted form">
-                <form class="ui form" onSubmit={()=>console.log('submited')}>
+                <form className="ui form" onSubmit={(e)=> handleNewUser(e)}>
                     <div className="ui equal width form">
                         <div className="fields">
                             <div className="field">
@@ -30,17 +31,17 @@ function Signup() {
                         <div className="fields">
                             <div className="field">
                                 <label>Password</label>
-                                <input placeholder="Password" name='password' type="text"></input>
+                                <input placeholder="Password" name='password' type="password"></input>
                             </div>
                             <div className="field">
                                 <label>Confirm Password</label>
-                                <input placeholder="Confirm Password" name='pwconfirm' type="text"></input>
+                                <input placeholder="Confirm Password" name='pwconfirm' type="password"></input>
                             </div>
                         </div>
                     </div>
-                    <button class="ui grey button" type="submit"  >Submit</button>
+                    <button className="ui grey button" type="submit"  >Submit</button>
                     <Link to = {'/login'}>
-                        <button class="ui grey button" type="login"  >Back to login</button>
+                        <button className="ui grey button" type="login"  >Back to login</button>
                     </Link> 
                 </form>
             </div>
