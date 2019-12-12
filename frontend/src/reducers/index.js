@@ -4,10 +4,9 @@ import ticketReducer from './ticketReducer'
 import {combineReducers} from 'redux'
 
 //combining all the reducer into allReducers
-console.log("in all reducer")
-const allReducers = combineReducers({
+const rootReducers = combineReducers({
     users: usersReducer,
     projects: projectReducer,
     tickets: ticketReducer
 })
-export default allReducers
+export default rootReducers

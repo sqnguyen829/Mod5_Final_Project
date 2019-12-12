@@ -1,12 +1,12 @@
-
-const initState = {
-    users:[],
-    displayUsers:[],
+const initialState = {
+    users:[{username:'test'}],
+    displayUsers:['steven'],
     isLoggedIn:false
 }
 
-const usersReducer = (state=initState, action) =>{
-    console.log(state)
+const usersReducer = (state = initialState, action) => {
+    console.log(action.type)
+    console.log(action.users)
     switch(action.type){
         case 'ALL_USERS':
             return {
@@ -14,9 +14,9 @@ const usersReducer = (state=initState, action) =>{
                 users:action.users,
                 displayUsers:action.users,
                 isLoggedIn:!state.isLoggedIn
-            };
+            }
         default:
-            return state;
+            return state
     }
 }
 export default usersReducer

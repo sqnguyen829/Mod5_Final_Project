@@ -1,41 +1,37 @@
 import React from 'react';
 import './Login.css'
-// import {useSelector, useDispatch} from 'react-redux'
-// import {} from './actions'
+import {Link} from 'react-router-dom'
 
 function Login() {
-    // const counter = useSelector(state => state.counter)
-    
-    console.log('hello')
     return(
         
-        <div class="ui middle aligned center aligned grid">
-            <div class="column">
-                <form action="https://s.codepen.io/voltron2112/debug/PqrEPM?" method="get" class="ui large form">
-                    <div class="ui stacked secondary  segment">
-                        <h2 class="ui image header">
-                            <div class="content ">
+        <div className="ui middle aligned center aligned grid">
+            <div className="column">
+                <form action="https://s.codepen.io/voltron2112/debug/PqrEPM?" method="get" className="ui large form">
+                    <div className="ui stacked secondary  segment">
+                        <h2 className="ui image header">
+                            <div className="content ">
                                 CodeProject Management
                             </div>
                         </h2>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
+                        <div className="field">
+                            <div className="ui left icon input">
+                                <i className="user icon"></i>
                                 <input type="text" name="username" placeholder="Username"></input>
                             </div>
                         </div>
-                        <div class="field">
-                            <div class="ui left icon input">
-                                <i class="lock icon"></i>
+                        <div className="field">
+                            <div className="ui left icon input">
+                                <i className="lock icon"></i>
                                     <input type="password" name="password" placeholder="Password"></input>
                             </div>
                         </div>
-                        <div class="ui fluid large blue submit button">Login</div>
+                        <div className="ui fluid large blue submit button">Login</div>
                     </div>
-                    <div class="ui error message"></div>
+                    <div className="ui error message"></div>
                 </form>
-                <div class="ui message">
-                    <a href="https://s.codepen.io/voltron2112/debug/PqrEPM?"> Sign up</a>
+                <div className="ui message">
+                    Join the Team <Link to = {'/signup'}> Sign up </Link> 
                 </div>
             </div>
         </div>
