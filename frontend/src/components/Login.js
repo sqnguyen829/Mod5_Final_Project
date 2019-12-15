@@ -1,13 +1,21 @@
 import React from 'react';
 import './Login.css'
 import {Link} from 'react-router-dom'
+import {useDispatch } from 'react-redux'
+import {login} from '../actions'
 
-function Login() {
+function Login(props) {
+    const dispatch = useDispatch()
+
     return(
-        
         <div className="ui middle aligned center aligned grid">
             <div className="column">
-                <form action="https://s.codepen.io/voltron2112/debug/PqrEPM?" method="get" className="ui large form">
+                <form onSubmit={(e)=> {
+                    e.preventDefault()
+                    login(e.target)
+                    props.history.push("/home")
+                    }} className="ui large form">
+                        
                     <div className="ui stacked secondary  segment">
                         <h2 className="ui image header">
                             <div className="content ">
@@ -26,7 +34,7 @@ function Login() {
                                     <input type="password" name="password" placeholder="Password"></input>
                             </div>
                         </div>
-                        <div className="ui fluid large blue submit button">Login</div>
+                        <button className="ui fluid large blue submit button" type="submit" >Login</button>
                     </div>
                     <div className="ui error message"></div>
                 </form>

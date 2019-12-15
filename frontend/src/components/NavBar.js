@@ -1,6 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
-function NavBar() {
+function NavBar(props) {
     return(
         <div className="ui inverted menu">
             <div className="header item">Brand</div>
@@ -27,7 +28,15 @@ function NavBar() {
                         <input type="text" placeholder="Search"></input>
                     </div>
                 </div>
-                <a className="item">Link</a>
+                <div className="item" onClick={()=>
+                    {
+
+                        localStorage.clear()
+                        props.history.push("/login")
+                        // {<Link to = {'/login'}> Sign up </Link>}
+                        console.log('logout')
+                    }
+                    }>Logout</div>
             </div>
         </div>
     )

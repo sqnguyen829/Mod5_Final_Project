@@ -5,12 +5,14 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import DefaultPage from './components/DefaultPage'
 import  Home from './containers/Home'
+import NavBar from './components/NavBar'
 // import {useSelector, useDispatch , connect} from 'react-redux'
 import {useSelector, useDispatch } from 'react-redux'
 import { handleUsers} from './actions/index'
+import { checkPropTypes } from 'prop-types';
 
 //when using connect App need props arg
-function App() {
+function App(props) {
     const users = useSelector(state => state.users)
     const displayUser = useSelector(state => state.users.displayUsers)
     // const isLoggedIn = useSelector(state => state.isLoggedIn)
@@ -25,7 +27,15 @@ function App() {
               <Route exact path = '/' component={DefaultPage}/>
               <Route path= '/login' component={Login}/>
               <Route path= '/signup' component={Signup}/>
-              <Route exact path= '/home' component={Home}/>
+              <Route exact path= '/home' component={Home} history={props.history}/>
+              {/* {localStorage.token?
+                <div>
+                <NavBar />
+                <Route exact path= '/home' component={Home} history={props.history}/>
+                </div>
+                :
+                ''
+              } */}
           </Switch>
         {/* </div> */}
           {/* <button onClick={ ()=> console.log(users) }>display State users</button> */}
