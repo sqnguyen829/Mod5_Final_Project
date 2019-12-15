@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import DefaultPage from './components/DefaultPage'
+import  Home from './containers/Home'
+import NavBar from './components/NavBar'
+// import {useSelector, useDispatch , connect} from 'react-redux'
+import {useSelector, useDispatch } from 'react-redux'
+import { handleUsers} from './actions/index'
+import { checkPropTypes } from 'prop-types';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//when using connect App need props arg
+function App(props) {
+    const users = useSelector(state => state.users)
+    const displayUser = useSelector(state => state.users.displayUsers)
+    // const isLoggedIn = useSelector(state => state.isLoggedIn)
+    const dispatch = useDispatch()
+    
+    return (
+      <BrowserRouter>
+        {/* <div className="background"> */}
+          {/* <button onClick={ ()=> dispatch(handleUsers) }>fetch user</button> */}
+          {/* <button onClick={ ()=> props.handleUsers() }>fetch user</button> */}
+          <Switch>
+              <Route exact path = '/' component={DefaultPage}/>
+              <Route path= '/login' component={Login}/>
+              <Route path= '/signup' component={Signup}/>
+              <Route exact path= '/home' component={Home} history={props.history}/>
+              {/* {localStorage.token?
+                <div>
+                <NavBar />
+                <Route exact path= '/home' component={Home} history={props.history}/>
+                </div>
+                :
+                ''
+              } */}
+          </Switch>
+        {/* </div> */}
+          {/* <button onClick={ ()=> console.log(users) }>display State users</button> */}
+      </BrowserRouter>
+    );
 }
+// const objForDispatch = { 
+//   handleUsers
+// }
+// const mapStateToProps = (state)=>{
+//   return state
+// }
+// export default connect(mapStateToProps, objForDispatch)(App)
+export default App
 
-export default App;
