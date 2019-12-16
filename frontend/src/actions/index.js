@@ -35,7 +35,7 @@ export const handleNewUser = (e) => {
     }, )
 }
 
-export const login = (obj) => {
+export const login = (obj,history) => {
     // e.preventDefault()
     console.log(obj[0].value)
     console.log(obj[1].value)
@@ -57,11 +57,13 @@ export const login = (obj) => {
         localStorage.firstname=userInfo.firstname
         localStorage.lastname=userInfo.lastname
         localStorage.email=userInfo.email
+        localStorage.role = userInfo.role
         localStorage.token = userInfo.token
         if(userInfo.token){
             console.log('current user is in')
-            // this.props.history.push('/home')
+            history.push('/home')
         }
+        console.log("Helllloooo!")
     })
 }
 

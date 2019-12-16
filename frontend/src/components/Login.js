@@ -6,14 +6,15 @@ import {login} from '../actions'
 
 function Login(props) {
     const dispatch = useDispatch()
-
+    
     return(
         <div className="ui middle aligned center aligned grid">
             <div className="column">
-                <form onSubmit={(e)=> {
+                <form onSubmit={async (e)=> {
                     e.preventDefault()
-                    login(e.target)
-                    props.history.push("/home")
+                    login(e.target, props.history)
+                    //  console.log("HIIIII")
+                    // props.history.push("/home")
                     }} className="ui large form">
                         
                     <div className="ui stacked secondary  segment">

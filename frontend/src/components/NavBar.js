@@ -1,12 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 
 function NavBar(props) {
     return(
         <div className="ui inverted menu">
             <div className="header item">Brand</div>
-            <div className="item">Link</div>
-            <div className="item">Link</div>
+            <div onClick={()=> props.history.push("/home/projects")} className="item">Projects</div>
+            <div onClick={()=> props.history.push("/home/tickets")} className="item">Tickets</div>
             <div className="item">Link</div>
                 <div className="ui dropdown item" tabIndex="0">
                 Dropdown
@@ -30,10 +29,8 @@ function NavBar(props) {
                 </div>
                 <div className="item" onClick={()=>
                     {
-
                         localStorage.clear()
                         props.history.push("/login")
-                        // {<Link to = {'/login'}> Sign up </Link>}
                         console.log('logout')
                     }
                     }>Logout</div>
