@@ -23,7 +23,6 @@ function Home(props) {
 //of user role and render the corresponding user container
 function currentUserLogged (props){
     let userType = localStorage.role
-    console.log(userType)
     switch(userType){
         case "admin":
             return <AdminContainer history={props.history}/>
