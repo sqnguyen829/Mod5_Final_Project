@@ -1,17 +1,63 @@
 const usersURL = 'http://localhost:3000/api/v1/users/'
 const projectsURL = 'http://localhost:3000/api/v1/projects/'
+const ticketsURL = 'http://localhost:3000/api/v1/tickets/'
 
 export const handleUsersAsnc = (userData) => {
     return { type: 'ALL_USERS', users: userData}
 }
 
-export const handleUsers =  dispatch => {
+export const handleUsers = dispatch => {
+    console.log('attempting fetch user')
     fetch(usersURL, {
-        method:"GET"
+        method:"GET",
+        headers:{
+            Authorization: `Bearer ${localStorage.token}`
+        }
     })
     .then(res => res.json())
     .then(userData =>{
+        console.log('fetching user')
+        console.log(userData)
         dispatch(handleUsersAsnc(userData))
+    })  
+}
+
+export const handleProjectsAsnc = (allProjectData) => {
+    return { type: 'ALL_PROJECTS', projects: allProjectData}
+}
+
+export const handleProjects = dispatch => {
+    console.log('attempting fetch projects')
+    fetch(projectsURL , {
+        method: "GET",
+        headers:{
+            Authorization: `Bearer ${localStorage.token}`
+        }
+    })
+    .then(res => res.josn())
+    .then(allProjectData =>{
+        console.log(allProjectData)
+        dispatch(handleProjectsAsnc(allProjectData))
+    })
+}
+
+export const handleTicketsAsnc = (ticketsData) => {
+    return { type: 'ALL_TICKETS', tickets: ticketsData}
+}
+
+export const handleTickets = dispatch => {
+    console.log('attempting fetch ticket')
+    fetch(ticketsURL, {
+        method:"GET",
+        headers:{
+            Authorization: `Bearer ${localStorage.token}`
+        }
+    })
+    .then(res => res.json())
+    .then(ticketData =>{
+        console.log('fetching ticket')
+        console.log(ticketData)
+        dispatch(handleUsersAsnc(ticketData))
     })  
 }
 

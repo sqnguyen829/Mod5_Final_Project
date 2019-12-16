@@ -1,4 +1,5 @@
 import React from 'react';
+import NewProjectRow from '../components/NewProjectRow'
 function ProjectContainer(props) {
     return(
     
