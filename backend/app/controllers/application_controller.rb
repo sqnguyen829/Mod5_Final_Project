@@ -4,11 +4,12 @@ class ApplicationController < ActionController::Base
 
     #this creates a token
     def encode_token(payload)# for token generation
-        JWT.encode(payload, "RentalSecretKey", "HS256") #algo is optioinal as a default HS256
+        JWT.encode(payload, "ProjManageSecretKey", "HS256") #algo is optioinal as a default HS256
     end
 
     def auth_header
         # { 'Authorization': 'Bearer <token>' }
+        # byebug
         request.headers['Authorization']
     end
     
@@ -24,10 +25,12 @@ class ApplicationController < ActionController::Base
     def decoded_token
         if auth_header
           token = auth_header.split(' ')[1]
+          # byebug
             puts token
           begin
            JWT.decode(token,"ProjManageSecretKey")[0] 
           rescue JWT::DecodeError
+            # byebug
             nil
           end
         end
