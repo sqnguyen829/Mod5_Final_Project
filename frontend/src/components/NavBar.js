@@ -3,7 +3,7 @@ import React from 'react';
 function NavBar(props) {
     return(
         <div className="ui inverted menu">
-            <div className="header item">Brand</div>
+            <div className="header item" onClick={()=> props.history.push("/home")}>Home</div>
             <div onClick={()=> props.history.push("/home/projects")} className="item">Projects</div>
             <div onClick={()=> props.history.push("/home/tickets")} className="item">Tickets</div>
             <div className="item">Link</div>

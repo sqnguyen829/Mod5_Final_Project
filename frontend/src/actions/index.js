@@ -1,6 +1,6 @@
 const usersURL = 'http://localhost:3000/api/v1/users/'
 const projectsURL = 'http://localhost:3000/api/v1/projects/'
-const ticketsURL = 'http://localhost:3000/api/v1/tickets/'
+const ticketsURL = 'http://localhost:3000/api/v1/project_tickets/'
 
 export const handleUsersAsnc = (userData) => {
     return { type: 'ALL_USERS', users: userData}
@@ -34,7 +34,7 @@ export const handleProjects = dispatch => {
             Authorization: `Bearer ${localStorage.token}`
         }
     })
-    .then(res => res.josn())
+    .then(res => res.json())
     .then(allProjectData =>{
         console.log(allProjectData)
         dispatch(handleProjectsAsnc(allProjectData))
