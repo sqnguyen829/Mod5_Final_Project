@@ -6,6 +6,7 @@ import ProjectContainer from './ProjectContainer'
 import TicketContainer from './TicketContainer'
 import {useSelector, useDispatch } from 'react-redux'
 import {handleProjects, handleUsers ,handleTickets} from '../actions/index'
+import AddProjectForm from '../components/AddProjectForm';
 
 
 function AdminContainer(props) {
@@ -35,6 +36,7 @@ function AdminContainer(props) {
                     {/* <Route path="/home/graph" component={HomeGraph}/> */}
                     <Route path="/home/projects" component={ProjectContainer}/>
                     <Route path="/home/tickets" component={TicketContainer}/>
+                    <Route path="/home/addproject" component={AddProjectForm}/>
                 </Switch>
             </div>
         </div>
