@@ -7,9 +7,8 @@ function AddProjectForm(props) {
     const dispatch = useDispatch()
     return(
         <div>
-            <form  onSubmit={(e)=> dispatch(handleNewProject(e))} className='ui form' >
-            {/* <form  onSubmit={(e)=> {
-                console.log(handleNewProject(e))}} className='ui form' > */}
+            <form  onSubmit={(e)=> {dispatch(handleNewProject(e))
+                                    props.history.push("/home/projects")}} className='ui form' >
                 <div className="two fields">
                     <div className="field">
                         <label>Project Title</label>

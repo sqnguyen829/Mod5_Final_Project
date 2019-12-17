@@ -110,8 +110,10 @@ export const handleNewProject = (e) => {
             dispatch(handleNewProjectAsnc(newProject))
         })
     }
-  
-    
+}
+
+export const removeProject = dispatch => {
+    console.log('removing')
 }
 
 export const login = (obj,history) => {
