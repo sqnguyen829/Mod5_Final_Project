@@ -1,47 +1,34 @@
 import React from 'react';
+import {useSelector} from 'react-redux'
 import NewProjectRow from '../components/NewProjectRow'
-function ProjectContainer(props) {
+function ProjectContainer() {
+    const projects = useSelector(state => state.projects)
+    console.log('project container')
+    console.log(projects.isProjectLoaded)
+    console.log(projects)
     return(
-    
-        <div className="ui grid container">
-             {/* <div className="row">
-                 <div className="column"> */}
-                    <table className="ui celled table">
-                        <thead>
-                            <tr>
-                                <th rowSpan="three wide column">Porject Name</th>
-                                <th rowSpan="eight wide column">Descrption</th>
-                                <th rowSpan="three  wide column">Owner of Project</th>
-                                <th colSpan="two wide column">Status</th>
-                            </tr>
-                            {/* <tr>
-                                <th>Ruby</th>
-                                <th>JavaScript</th>
-                                <th>Python</th>
-                            </tr> */}
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Alpha Team</td>
-                                <td>Project 1</td>
-                                <td>2</td>
-                                <td>
-                                  detail
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Beta Team</td>
-                                <td>Project 2</td>
-                                <td>52</td>
-                                <td>
-                                   detail
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                 {/* </div>
-             </div> */}
-         </div>
+        <div>
+            <div className="ui grid container">
+                <button onClick={()=> console.log('adding project')} className="ui fluid small blue button">Add Projects</button>
+                 {/* <div className="row">
+                     <div className="column"> */}
+                        <table className="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th rowSpan="three wide column">Porject Name</th>
+                                    <th rowSpan="eight wide column">Descrption</th>
+                                    <th rowSpan="three  wide column">Project created on</th>
+                                    <th colSpan="two wide column">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project}/>) :''}
+                            </tbody>
+                        </table>
+                     {/* </div>
+                 </div> */}
+             </div>
+        </div>
         
     )
 }

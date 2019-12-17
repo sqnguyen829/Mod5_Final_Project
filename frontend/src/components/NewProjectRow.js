@@ -1,14 +1,14 @@
 import React from 'react'
 
-function NewProjectRow() {
-    
+function NewProjectRow(props) {
     return(
         <tr>
-            <td>Alpha Team</td>
-            <td>Project 1</td>
-            <td>2</td>
+            <td>{props.project.title}</td>
+            <td>{props.project.desc}</td>
+            <td>{props.project.created_at}</td>
             <td>
-              detail
+              {props.project.status}
+              <button onClick={()=> console.log('see details')} className="mini ui blue button">Details</button>
             </td>
         </tr>
     )

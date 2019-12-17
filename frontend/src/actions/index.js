@@ -36,7 +36,6 @@ export const handleProjects = dispatch => {
     })
     .then(res => res.json())
     .then(allProjectData =>{
-        console.log(allProjectData)
         dispatch(handleProjectsAsnc(allProjectData))
     })
 }
