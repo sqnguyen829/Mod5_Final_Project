@@ -2,10 +2,11 @@ const usersURL = 'http://localhost:3000/api/v1/users/'
 const projectsURL = 'http://localhost:3000/api/v1/projects/'
 const ticketsURL = 'http://localhost:3000/api/v1/project_tickets/'
 
+//sends type back to call the right reducer
 export const handleUsersAsnc = (userData) => {
     return { type: 'ALL_USERS', users: userData}
 }
-
+//fetching all users in the DB and send t the handleUserAsnc fn to find the right reducer
 export const handleUsers = dispatch => {
     console.log('attempting fetch user')
     fetch(usersURL, {
@@ -75,6 +76,24 @@ export const handleNewUser = (e) => {
                 role:'N/A',
                 firstname:e.target[0].value,
                 lastname:e.target[1].value,
+            }
+        })
+    }, )
+}
+
+export const handleNewProject = (e) => {
+    e.preventDefault()
+    fetch(projectsURL, {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "project": {
+                user_id:localStorage.id,
+                title:e.target[0].value,
+                desc:e.target[1].value,
+                status:'Open'
             }
         })
     }, )

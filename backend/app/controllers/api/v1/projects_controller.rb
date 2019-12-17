@@ -3,4 +3,5 @@ class Api::V1::ProjectsController < ApplicationController
         projects = Project.all
         render json: projects 
     end
+    
 end
