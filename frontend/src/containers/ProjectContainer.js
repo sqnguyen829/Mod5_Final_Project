@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
 import NewProjectRow from '../components/NewProjectRow'
-function ProjectContainer() {
+function ProjectContainer(props) {
     const projects = useSelector(state => state.projects)
     console.log('project container')
     console.log(projects.isProjectLoaded)
@@ -9,7 +9,7 @@ function ProjectContainer() {
     return(
         <div>
             <div className="ui grid container">
-                <button onClick={()=> console.log('adding project')} className="ui fluid small blue button">Add Projects</button>
+                <button onClick={()=> props.history.push("/home/addproject")} className="ui fluid small blue button">Add Projects</button>
                  {/* <div className="row">
                      <div className="column"> */}
                         <table className="ui celled table">
@@ -22,7 +22,7 @@ function ProjectContainer() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project}/>) :''}
+                                {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project} key={project.id}/>) :''}
                             </tbody>
                         </table>
                      {/* </div>
