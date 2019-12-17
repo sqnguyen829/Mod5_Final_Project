@@ -1,11 +1,15 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import handleNewProject from '../actions'
+// import {Link} from 'react-router-dom'
+import {handleNewProject} from '../actions'
+import {useDispatch } from 'react-redux'
 
-function AddProjectForm() {
+function AddProjectForm(props) {
+    const dispatch = useDispatch()
     return(
         <div>
-            <form  onSubmit={()=>console.log('submit project')} className='ui form' >
+            <form  onSubmit={(e)=> dispatch(handleNewProject(e))} className='ui form' >
+            {/* <form  onSubmit={(e)=> {
+                console.log(handleNewProject(e))}} className='ui form' > */}
                 <div className="two fields">
                     <div className="field">
                         <label>Project Title</label>

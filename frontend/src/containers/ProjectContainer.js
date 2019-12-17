@@ -12,7 +12,7 @@ function ProjectContainer(props) {
                 <button onClick={()=> props.history.push("/home/addproject")} className="ui fluid small blue button">Add Projects</button>
                  {/* <div className="row">
                      <div className="column"> */}
-                        <table className="ui celled table">
+                        <table className="ui celled striped table">
                             <thead>
                                 <tr>
                                     <th rowSpan="three wide column">Porject Name</th>

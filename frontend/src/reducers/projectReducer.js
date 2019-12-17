@@ -14,8 +14,14 @@ const projectsReducer = (state = initialState, action) => {
                 displayProjects:action.projects,
                 isProjectLoaded:true
             }
-        case 'ADD_PROJECT':
-            return console.log('adding')
+        case 'ADD_NEW_PROJECT':
+            console.log('in reducer')
+            debugger
+            return {
+                ...state,
+                projects:[...state.projects, action.newProject],
+                displayProjects:[...state.displayProjects, action.newProject]
+            }
         default:
             return state
     }

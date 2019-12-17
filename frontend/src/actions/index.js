@@ -78,25 +78,40 @@ export const handleNewUser = (e) => {
                 lastname:e.target[1].value,
             }
         })
-    }, )
+    })
+}
+
+export const handleNewProjectAsnc = (newProject) => {
+    return {type:'ADD_NEW_PROJECT', newProject}
 }
 
 export const handleNewProject = (e) => {
-    e.preventDefault()
-    fetch(projectsURL, {
-        method: 'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "project": {
-                user_id:localStorage.id,
-                title:e.target[0].value,
-                desc:e.target[1].value,
-                status:'Open'
-            }
+    return dispatch => {
+        e.preventDefault()
+        
+        fetch(projectsURL, {
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "project": {
+                    user_id:localStorage.id,
+                    title:e.target[0].value,
+                    desc:e.target[1].value,
+                    status:'Open'
+                }
+            })
         })
-    }, )
+        .then(res=>res.json())
+        .then(newProject => {
+            dispatch(handleNewProjectAsnc(newProject))
+        })
+    }
+  
+    
 }
 
 export const login = (obj,history) => {
