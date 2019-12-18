@@ -2,7 +2,7 @@ const initialState = {
     projects:[{projects:'project 1'}],
     displayProjects:[],
     isProjectLoaded:false,
-    currentProject:null
+    currentProjectDetail:null
 }
 
 const projectsReducer = (state = initialState, action) => {
@@ -14,8 +14,17 @@ const projectsReducer = (state = initialState, action) => {
                 displayProjects:action.projects,
                 isProjectLoaded:true
             }
-        case 'ADD_PROJECT':
-            return console.log('adding')
+        case 'ADD_NEW_PROJECT':
+            return {
+                ...state,
+                projects:[...state.projects, action.newProject],
+                displayProjects:[...state.displayProjects, action.newProject]
+            }
+        case 'CURRENT_PROJECT_DETAIL':
+            return {
+                ...state,
+                currentProjectDetail:action.currentProject
+            }
         default:
             return state
     }

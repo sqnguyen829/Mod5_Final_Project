@@ -7,7 +7,6 @@ import AdminContainer from './AdminContainer'
 // import {handleProjects, handleUsers ,handleTickets} from '../actions/index'
 
 function Home(props) {
-    console.log(localStorage.token)
     return(
         <div>
             {localStorage.token?

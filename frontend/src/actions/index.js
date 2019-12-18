@@ -28,7 +28,6 @@ export const handleProjectsAsnc = (allProjectData) => {
 }
 
 export const handleProjects = dispatch => {
-    console.log('attempting fetch projects')
     fetch(projectsURL , {
         method: "GET",
         headers:{
@@ -78,32 +77,49 @@ export const handleNewUser = (e) => {
                 lastname:e.target[1].value,
             }
         })
-    }, )
+    })
+}
+
+export const handleNewProjectAsnc = (newProject) => {
+    return {type:'ADD_NEW_PROJECT', newProject}
 }
 
 export const handleNewProject = (e) => {
-    e.preventDefault()
-    fetch(projectsURL, {
-        method: 'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "project": {
-                user_id:localStorage.id,
-                title:e.target[0].value,
-                desc:e.target[1].value,
-                status:'Open'
-            }
+    return dispatch => {
+        e.preventDefault()
+        
+        fetch(projectsURL, {
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "project": {
+                    user_id:localStorage.id,
+                    title:e.target[0].value,
+                    desc:e.target[1].value,
+                    status:'Open'
+                }
+            })
         })
-    }, )
+        .then(res=>res.json())
+        .then(newProject => {
+            dispatch(handleNewProjectAsnc(newProject))
+        })
+    }
+}
+
+export const handleShowProject = (currentProject) => {
+    return {type:'CURRENT_PROJECT_DETAIL', currentProject}
+}
+
+export const removeProject = dispatch => {
+    console.log('removing')
 }
 
 export const login = (obj,history) => {
-    // e.preventDefault()
-    console.log(obj[0].value)
-    console.log(obj[1].value)
-    // debugger
     fetch("http://localhost:3000/api/v1/login", {
         method: 'POST',
         headers:{
@@ -124,10 +140,8 @@ export const login = (obj,history) => {
         localStorage.role = userInfo.role
         localStorage.token = userInfo.token
         if(userInfo.token){
-            console.log('current user is in')
             history.push('/home')
         }
-        console.log("Helllloooo!")
     })
 }
 
