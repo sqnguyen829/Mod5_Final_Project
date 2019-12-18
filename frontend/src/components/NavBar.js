@@ -31,7 +31,6 @@ function NavBar(props) {
                     {
                         localStorage.clear()
                         props.history.push("/login")
-                        console.log('logout')
                     }
                     }>Logout</div>
             </div>

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
         if auth_header
           token = auth_header.split(' ')[1]
           # byebug
-            puts token
+            # puts token
           begin
            JWT.decode(token,"ProjManageSecretKey")[0] 
           rescue JWT::DecodeError
