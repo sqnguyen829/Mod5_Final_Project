@@ -1,5 +1,4 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
 import {handleNewProject} from '../actions'
 import {useDispatch } from 'react-redux'
 

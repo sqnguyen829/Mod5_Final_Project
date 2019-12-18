@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 
 function ShowProjectContainer(props) {
     const project = useSelector(state=> state.projects.currentProjectDetail)
-    console.log('in ShowProjecrContainer', project)
     return(
         <div>
             <h1>Title: {project.title}</h1>
