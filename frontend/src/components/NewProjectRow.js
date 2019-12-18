@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react' 
+import { useDispatch } from 'react-redux'
+import { handleShowProject } from '../actions/index'
 
 function NewProjectRow(props) {
+    const dispatch = useDispatch()
     return(
         <tr>
             <td>{props.project.title}</td>
@@ -9,7 +12,8 @@ function NewProjectRow(props) {
             <td>
               {props.project.status}
               <button onClick={()=> console.log('remove btn')} className="mini ui right floated blue button">Remove</button>
-              <button onClick={()=> console.log('see details')} className="mini ui right floated blue button">Details</button>
+              <button onClick={()=> {dispatch(handleShowProject(props.project))
+                                    props.history.push(`/home/projects/${props.project.id}`)}} className="mini ui right floated blue button">Details</button>
             </td>
         </tr>
     )
