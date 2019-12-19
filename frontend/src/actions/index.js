@@ -87,7 +87,6 @@ export const handleNewProjectAsnc = (newProject) => {
 export const handleNewProject = (e) => {
     return dispatch => {
         e.preventDefault()
-        
         fetch(projectsURL, {
             method: 'POST',
             headers:{
@@ -107,6 +106,44 @@ export const handleNewProject = (e) => {
         .then(res=>res.json())
         .then(newProject => {
             dispatch(handleNewProjectAsnc(newProject))
+        })
+    }
+}
+
+export const handleEditProjectAsnc = (payload) => {
+    return {type:'EDIT_PROJECT', payload}
+}
+
+export const handleEditProject = (e,project,projects) => {
+    return dispatch => {
+        e.preventDefault()
+        fetch(`http://localhost:3000/api/v1/projects/${project.id}`, {
+            method:'PATCH',
+            headers:{
+                'Accept': 'application/json',
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'project':{
+                    title:e.target[0].value,
+                    desc:e.target[1].value
+                }
+            })
+        })
+        .then(res=>res.json())
+        .then(updatedProject => {
+            let updatedProjects = projects.map(project =>{
+                if(project.id === updatedProject.id){
+                    return updatedProject
+                }
+                return project
+            })
+            let payload = {
+                updatedProjects,
+                updatedProject
+            }
+            dispatch(handleEditProjectAsnc(payload))
         })
     }
 }
