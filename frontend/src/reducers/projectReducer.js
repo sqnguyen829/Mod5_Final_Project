@@ -25,7 +25,7 @@ const projectsReducer = (state = initialState, action) => {
                 projects:action.projects,
                 displayProjects:action.projects,
                 isProjectLoaded:true,
-                currentProjectDetail:state.currentProjectDetail
+                currentProjectDetail:action.projects[0]
             }
         case 'ADD_NEW_PROJECT':
             return {
@@ -45,8 +45,27 @@ const projectsReducer = (state = initialState, action) => {
                 projects:state.projects.filter(project => project.id !== action.project.id),
                 displayProjects:state.displayProjects.filter(project => project.id !== action.project.id)
             }
+        case 'EDIT_PROJECT':
+            return {
+                ...state,
+                displayProjects:action.payload.updatedProjects,
+                currentProjectDetail:action.payload.updatedProject
+            }
         default:
             return state
     }
 }
 export default projectsReducer
+// let updatedNotes = this.state.notes.map(note => {
+//     if(note.id === newNote.id){
+//       return newNote
+//     }
+//     return note
+//   })
+
+//   this.setState({
+//     notes: updatedNotes,
+//     selectNote: newNote
+//   })
+// })
+// }

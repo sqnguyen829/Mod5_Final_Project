@@ -24,7 +24,7 @@ class Api::V1::ProjectsController < ApplicationController
     def update
         project = Project.find(params[:id])
         project.update(project_params)
-        render json: project
+        render json: project, include: [:user,:project_members, :project_tickets, :users ]
     end
 
     def destroy
