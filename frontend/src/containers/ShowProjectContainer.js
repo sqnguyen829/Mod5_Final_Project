@@ -36,6 +36,7 @@ function ShowProjectContainer(props) {
                     <div class="ui card">
                         <div class="content">
                             <a class="header"><i class="user icon"></i>Current Project Members</a>
+                            <div className="ui divider"></div>
                             <div >
                               <ul>Steven</ul>
                               <ul>Kay</ul>

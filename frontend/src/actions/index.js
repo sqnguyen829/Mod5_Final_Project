@@ -115,8 +115,21 @@ export const handleShowProject = (currentProject) => {
     return {type:'CURRENT_PROJECT_DETAIL', currentProject}
 }
 
-export const removeProject = dispatch => {
-    console.log('removing')
+export const handleRemoveProject = (project) => {
+    return {type:'REMOVE_PROJECT', project}
+}
+
+export const removeProject = (project) => {
+    return dispatch => {
+        fetch(`http://localhost:3000/api/v1/projects/${project.id}`,{
+            method:"DELETE",
+            headers:{
+                Authorization: `Bearer ${localStorage.token}`
+            }
+        },
+            dispatch(handleRemoveProject(project))
+        )
+    }
 }
 
 export const login = (obj,history) => {
