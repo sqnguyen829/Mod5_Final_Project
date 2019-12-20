@@ -1,7 +1,7 @@
 const initialState = {
     users:[{username:'test'}],
     displayUsers:['steven'],
-    isLoggedIn:false
+    isLoggedIn:false,
 }
 
 const usersReducer = (state = initialState, action) => {

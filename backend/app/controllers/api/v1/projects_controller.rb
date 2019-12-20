@@ -2,8 +2,8 @@ class Api::V1::ProjectsController < ApplicationController
     def index
         projects = Project.all
         # render projects.to_json(:include => [:user, {:project_tickets => {:include => [:user]}}])
-        # render json: projects, :include => { :user, :project_tickets => {:include => :user}}
-        render json: projects, include: [:user,:project_members, :project_tickets, :users ]
+        render json: projects, :include => [ :user, :project_tickets => {:include => :user}]
+        # render json: projects, include: [:user,:project_members, :project_tickets, :users ]
     end
     # render json: users.as_json(except: [:created_at, :updated_at], :include => {:cars=>{except: [:created_at, :updated_at]}, :renting_cars =>{except: [:created_at, :updated_at]}})
     

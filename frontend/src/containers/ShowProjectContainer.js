@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button,Modal } from 'semantic-ui-react'
 import { handleEditProject } from '../actions'
 // import { }
 
@@ -26,21 +26,20 @@ function ShowProjectContainer(props) {
                                 <h5 className="mini ui right floated segment">Status: {project.status}</h5>
                                 <Modal trigger={<Button color='blue' size='mini'>Edit</Button>} >
                                     <div>
-                                    <form  onSubmit={(e)=> dispatch(handleEditProject(e,project,projects))} className='ui form' >
-                                        {/* <form  onSubmit={()=> console.log('hi')} className='ui form' > */}
-                                            <div className="two fields">
-                                                <div className="field">
-                                                    <label>Project Title</label>
-                                                    {/* <input placeholder="Project Title" type="text"> </input> */}
-                                                    <input defaultValue={project.title} type="text"></input>
-                                                </div>
-                                            </div>
+                                    <form  onSubmit={(e)=> {dispatch(handleEditProject(e,project,projects))
+                                                            props.history.push(`/home/projects/${project.id}`)}} className='ui form' >
+                                        <div className="two fields">
                                             <div className="field">
-                                                <label>Description</label>
-                                                <textarea defaultValue={project.desc} type="text"></textarea>
+                                                <label>Project Title</label>
+                                                <input defaultValue={project.title} type="text"></input>
                                             </div>
-                                            <button className="ui blue button" type="submit">Create Project</button>
-                                        </form>
+                                        </div>
+                                        <div className="field">
+                                            <label>Description</label>
+                                            <textarea defaultValue={project.desc} type="text"></textarea>
+                                        </div>
+                                        <button className="ui blue button" type="submit">Create Project</button>
+                                    </form>
                                     </div>
                                 </Modal>
                                 <button onClick={()=>props.history.push('/home/projects')} className="mini ui left floated blue button"> Back to Project List</button>

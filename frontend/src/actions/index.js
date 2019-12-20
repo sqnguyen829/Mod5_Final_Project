@@ -36,6 +36,7 @@ export const handleProjects = dispatch => {
     })
     .then(res => res.json())
     .then(allProjectData =>{
+        console.log(allProjectData)
         dispatch(handleProjectsAsnc(allProjectData))
     })
 }
@@ -194,49 +195,3 @@ export const login = (obj,history) => {
         }
     })
 }
-
-// login = (e) => {
-//     e.preventDefault()
-//     fetch("http://localhost:3000/api/v1/login",{
-//         method: 'POST',
-//         headers:{
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//                 username: this.state.username,
-//                 password: this.state.password
-//       })
-//     })
-//     .then(res=> res.json())
-//     .then(userInfo => {
-//         localStorage.username = userInfo.username
-//         localStorage.point= userInfo.point
-//         localStorage.id=userInfo.id
-//         localStorage.token = userInfo.token
-//         if(userInfo.token){
-//             this.props.history.push('/flatironrental/cars')
-//         }
-//     })
-// }
-
-
-// export const handleProjectsAsnc = (data) => {
-//     return { type: 'ALL_PROJECTS', projects: data}
-// }
-
-// export const handleProjects = () =>{
-//     return dispatch => {
-//         fetch(usersURL, {
-//             method:"GET"
-//         })
-//         .then(res => res.json())
-//         .then(projectData =>{
-//             dispatch(handleProjectsAsnc(projectData))
-//         })
-//     }
-// }
-
-// export const testing = () => {
-//     // return dispatch(console.log('testing'))
-//     return {type: 'TESTING'}
-// }
