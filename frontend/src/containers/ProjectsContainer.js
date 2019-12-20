@@ -10,9 +10,9 @@ function ProjectContainer(props) {
             <div className="ui grid container">
                 <button onClick={()=> props.history.push("/home/addproject")} className="ui fluid small blue button">Add Projects</button>
                 <Form>
-                    <div class="ui action input">
+                    <div className="ui action input">
                         <input type="text" placeholder="Search by Project Name" />
-                        <button class="ui button">Search</button>
+                        <button className="ui button">Search</button>
                     </div>
                     <Form.Field>
                         Filter by Status

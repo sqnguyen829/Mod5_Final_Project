@@ -2,13 +2,14 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button,Modal } from 'semantic-ui-react'
 import { handleEditProject } from '../actions'
-// import { }
-
+import ProjectTicketCard from '../components/ProjectTicketCard'
+import CreateTicketModal from '../components/CreateTicketModal'
 function ShowProjectContainer(props) {
     const project = useSelector(state=> state.projects.currentProjectDetail)
     const dispatch = useDispatch()
     const projects = useSelector(state=> state.projects.displayProjects)
-    console.log(project)
+    const projectTicketCheck = project.project_tickets? project.project_tickets[0] : null
+
     return(
         <div>
             {project? 
@@ -44,14 +45,19 @@ function ShowProjectContainer(props) {
                                 </Modal>
                                 <button onClick={()=>props.history.push('/home/projects')} className="mini ui left floated blue button"> Back to Project List</button>
                             </div>
-                            <div className="ui raised very padded text container segment">
-                                <h2 className="ui header"> Ticket: Some ticket name</h2>
-                                <h4 className="ui horizontal divider header">
-                                    Description
-                                </h4>
-                                <p>Issue to be resolved</p>
-                                <div className="ui divider"></div>
-                                <button className="mini ui left floated blue button"> Edit</button>
+                            <div>
+                                {projectTicketCheck? 
+                                    <div>
+                                        {project.project_tickets.map(project => <ProjectTicketCard project={project} key={project.id}/>)}
+                                        <CreateTicketModal/>
+                                    </div>
+                                :
+                                <div className="ui raised very padded text container segment">
+                                    <h2 className="ui header">No tickets for this project</h2>
+                                    {/* <button className="mini ui left floated blue button"> Add a Ticket</button> */}
+                                    <CreateTicketModal/>
+                                </div>
+                                }
                             </div>
                         </div>
                     </div>
