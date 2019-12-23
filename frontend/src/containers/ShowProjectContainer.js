@@ -39,6 +39,16 @@ function ShowProjectContainer(props) {
                                             <label>Description</label>
                                             <textarea defaultValue={project.desc} type="text"></textarea>
                                         </div>
+                                        <label>Status</label>
+                                        <div>
+                                            <div class="ui compact menu">
+                                                <select class="ui dropdown">
+                                                    <option value="Open">Open</option>
+                                                    <option value="Closed">Closed</option>
+                                                    <option value="In Progress">In Progress</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <button className="ui blue button" type="submit">Create Project</button>
                                     </form>
                                     </div>

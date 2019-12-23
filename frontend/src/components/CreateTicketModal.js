@@ -1,11 +1,16 @@
 import React from 'react'
 import { Button,Modal } from 'semantic-ui-react'
+import { useDispatch }from 'react-redux'
 
 function CreateTicketModal(props) {
+
+    const dispatch = useDispatch()
+
     return(
         <Modal trigger={<Button color='blue' size='mini'>Add a Ticket</Button>} >
             <div>
-                <form  onSubmit={()=> console.log('Making tickets') } className='ui form' >
+                <form  onSubmit={(e)=> {console.log(e)
+                                        e.preventDefault()}} className='ui form' >
                     <div className="two fields">
                         <div className="field">
                             <label>Ticket Title</label>
@@ -16,17 +21,23 @@ function CreateTicketModal(props) {
                         <label>Description</label>
                         <textarea type="text"></textarea>
                     </div>
+                    <label>Type of Ticket</label>
                     <div>
-                        <div class="ui selection dropdown">
-                            <input type="hidden" name="priority"></input>
-                            <i class="dropdown icon"></i>
-                            <div class="default text">Prioirty</div>
-                            <div class="menu">
-                                <div class="item" data-value="0">Low Priority</div>
-                                <div class="item" data-value="1">Medium Priority</div>
-                                <div class="item" data-value="2">High Priority</div>
-                            </div>
+                        <div class="ui compact menu">
+                            <select class="ui dropdown">
+                                <option value="Feature Request">Feature Request</option>
+                                <option value="Bug Fix Request">Bug Fix Request</option>
+                                <option value="Remova Feature Request">Remove Feature Request</option>
+                                <option value="Other Request">Other Request</option>
+                            </select>
                         </div>
+                    </div>
+                    <div class="ui compact menu">
+                        <select class="ui dropdown">
+                            <option value="Low Priority">Low Priority</option>
+                            <option value="Medium Priority">Medium Priority</option>
+                            <option value="High Priority">High Priority</option>
+                        </select>
                     </div>
                     <button className="ui blue button" type="submit">Create Ticket</button>
                 </form>
