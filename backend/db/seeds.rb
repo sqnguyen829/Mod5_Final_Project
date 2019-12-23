@@ -15,7 +15,7 @@ ProjectTicketSolver.destroy_all
 u1 = User.create(username:"admin", email:'admin@gmail.com', password:'admin246', role:'admin',firstname:'Steven', lastname:'Nguyen')
 u2 = User.create(username:"manager", email:'manager@gmail.com', password:'manager135', role:'manager',firstname:'Kay', lastname:'Smith')
 u3 = User.create(username:"developer", email:'dev@gmail.com', password:'devperson', role:'developer',firstname:'Sam', lastname:'Jones')
-u3 = User.create(username:"submitter", email:'submitter@gmail.com', password:'submit', role:'N/A',firstname:'Tammy', lastname:'Lee')
+u4 = User.create(username:"submitter", email:'submitter@gmail.com', password:'submit', role:'N/A',firstname:'Tammy', lastname:'Lee')
 
 p1 = Project.create(user_id:u1.id, title:'Pet Adoption App', desc:'Create an app for an animal shelter.', status:'Completed')
 p2 = Project.create(user_id:u2.id, title:'Car Rental App', desc:'Create an app for a car rental company.', status:'In Progress')

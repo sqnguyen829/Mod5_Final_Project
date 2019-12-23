@@ -13,7 +13,6 @@ function Login(props) {
                 <form onSubmit={async (e)=> {
                     e.preventDefault()
                     login(e.target, props.history)
-                    // props.history.push("/home")
                     }} className="ui large form">
                         
                     <div className="ui stacked secondary  segment">

@@ -1,12 +1,49 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
 import NewProjectRow from '../components/NewProjectRow'
+import { Form, Checkbox } from 'semantic-ui-react'
+
 function ProjectContainer(props) {
     const projects = useSelector(state => state.projects)
     return(
         <div>
             <div className="ui grid container">
                 <button onClick={()=> props.history.push("/home/addproject")} className="ui fluid small blue button">Add Projects</button>
+                <Form>
+                    <div className="ui action input">
+                        <input type="text" placeholder="Search by Project Name" />
+                        <button className="ui button">Search</button>
+                    </div>
+                    <Form.Field>
+                        Filter by Status
+                    </Form.Field>
+                    <Form.Field>
+                      <Checkbox
+                        radio
+                        label='Open'
+                        name='checkboxRadioGroup'
+                        value='this'
+                        // checked={this.state.value === 'this'}
+                        // onChange={this.handleChange}
+                      />
+                      <Checkbox
+                        radio
+                        label='Closed'
+                        name='checkboxRadioGroup'
+                        value='that'
+                        // checked={this.state.value === 'that'}
+                        // onChange={this.handleChange}
+                      />
+                      <Checkbox
+                        radio
+                        label='In Progress'
+                        name='checkboxRadioGroup'
+                        value='that'
+                        // checked={this.state.value === 'that'}
+                        // onChange={this.handleChange}
+                      />
+                    </Form.Field>
+                </Form>
                  {/* <div className="row">
                      <div className="column"> */}
                         <table className="ui celled striped table">

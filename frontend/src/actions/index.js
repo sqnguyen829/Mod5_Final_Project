@@ -23,43 +23,6 @@ export const handleUsers = dispatch => {
     })  
 }
 
-export const handleProjectsAsnc = (allProjectData) => {
-    return { type: 'ALL_PROJECTS', projects: allProjectData}
-}
-
-export const handleProjects = dispatch => {
-    fetch(projectsURL , {
-        method: "GET",
-        headers:{
-            Authorization: `Bearer ${localStorage.token}`
-        }
-    })
-    .then(res => res.json())
-    .then(allProjectData =>{
-        dispatch(handleProjectsAsnc(allProjectData))
-    })
-}
-
-export const handleTicketsAsnc = (ticketsData) => {
-    return { type: 'ALL_TICKETS', tickets: ticketsData}
-}
-
-export const handleTickets = dispatch => {
-    console.log('attempting fetch ticket')
-    fetch(ticketsURL, {
-        method:"GET",
-        headers:{
-            Authorization: `Bearer ${localStorage.token}`
-        }
-    })
-    .then(res => res.json())
-    .then(ticketData =>{
-        console.log('fetching ticket')
-        console.log(ticketData)
-        dispatch(handleUsersAsnc(ticketData))
-    })  
-}
-
 export const handleNewUser = (e) => {
     e.preventDefault()
     fetch(usersURL, {
@@ -77,6 +40,24 @@ export const handleNewUser = (e) => {
                 lastname:e.target[1].value,
             }
         })
+    })
+}
+/////////////////////////////////////////////////Project FN Start//////////////////////////////////////////
+export const handleProjectsAsnc = (allProjectData) => {
+    return { type: 'ALL_PROJECTS', projects: allProjectData}
+}
+
+export const handleProjects = dispatch => {
+    fetch(projectsURL , {
+        method: "GET",
+        headers:{
+            Authorization: `Bearer ${localStorage.token}`
+        }
+    })
+    .then(res => res.json())
+    .then(allProjectData =>{
+        console.log(allProjectData)
+        dispatch(handleProjectsAsnc(allProjectData))
     })
 }
 
@@ -168,6 +149,62 @@ export const removeProject = (project) => {
         )
     }
 }
+/////////////////////////////////////////////////Project FN END//////////////////////////////////////////
+
+/////////////////////////////////////////////////Ticket FN Start//////////////////////////////////////////
+export const handleTicketsAsnc = (ticketsData) => {
+    return { type: 'ALL_TICKETS', tickets: ticketsData}
+}
+
+export const handleTickets = dispatch => {
+    console.log('attempting fetch ticket')
+    fetch(ticketsURL, {
+        method:"GET",
+        headers:{
+            Authorization: `Bearer ${localStorage.token}`
+        }
+    })
+    .then(res => res.json())
+    .then(ticketData =>{
+        console.log('fetching ticket')
+        console.log(ticketData)
+        dispatch(handleUsersAsnc(ticketData))
+    })  
+}
+
+export const handleNewTicketAsnc = (ticket) => {
+    return {type:'ADD_TICKET', ticket}
+}
+
+export const handleNewTicket = (e) => {
+    return dispatch => {
+        e.preventDefault()
+        fetch(ticketsURL, {
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "project_ticket": {
+                    user_id:localStorage.id,
+                    title:e.target[0].value,
+                    desc:e.target[1].value,
+                    status:e.target[2].value,
+                    priority:e.target[3].value,
+                    type_of_ticket:e.target[4].value
+                }
+            })
+        })
+        .then(res=>res.json())
+        .then(newProject => {
+            dispatch(handleNewTicketAsnc(newProject))
+        })
+    }
+}
+
+/////////////////////////////////////////////////Ticket FN END//////////////////////////////////////////
 
 export const login = (obj,history) => {
     fetch("http://localhost:3000/api/v1/login", {
@@ -194,49 +231,3 @@ export const login = (obj,history) => {
         }
     })
 }
-
-// login = (e) => {
-//     e.preventDefault()
-//     fetch("http://localhost:3000/api/v1/login",{
-//         method: 'POST',
-//         headers:{
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//                 username: this.state.username,
-//                 password: this.state.password
-//       })
-//     })
-//     .then(res=> res.json())
-//     .then(userInfo => {
-//         localStorage.username = userInfo.username
-//         localStorage.point= userInfo.point
-//         localStorage.id=userInfo.id
-//         localStorage.token = userInfo.token
-//         if(userInfo.token){
-//             this.props.history.push('/flatironrental/cars')
-//         }
-//     })
-// }
-
-
-// export const handleProjectsAsnc = (data) => {
-//     return { type: 'ALL_PROJECTS', projects: data}
-// }
-
-// export const handleProjects = () =>{
-//     return dispatch => {
-//         fetch(usersURL, {
-//             method:"GET"
-//         })
-//         .then(res => res.json())
-//         .then(projectData =>{
-//             dispatch(handleProjectsAsnc(projectData))
-//         })
-//     }
-// }
-
-// export const testing = () => {
-//     // return dispatch(console.log('testing'))
-//     return {type: 'TESTING'}
-// }
