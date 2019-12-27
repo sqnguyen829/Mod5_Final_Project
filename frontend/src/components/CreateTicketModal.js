@@ -4,12 +4,10 @@ import { useDispatch }from 'react-redux'
 import { handleNewProjectTicket } from '../actions'
 function CreateTicketModal(props) {
     const dispatch = useDispatch()
-
     return(
         <Modal trigger={<Button color='blue' size='mini'>Add a Ticket</Button>} >
             <div>
-                <form  onSubmit={(e)=> {dispatch(handleNewProjectTicket(e,props.project))
-                                        e.preventDefault()}} className='ui form' >
+                <form  onSubmit={(e)=> dispatch(handleNewProjectTicket(e,props.project))} className='ui form' >
                     <div className="two fields">
                         <div className="field">
                             <label>Ticket Title</label>

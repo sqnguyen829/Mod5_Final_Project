@@ -66,7 +66,7 @@ function ShowProjectContainer(props) {
                                 <div className="ui raised very padded text container segment">
                                     <h2 className="ui header">No tickets for this project</h2>
                                     {/* <button className="mini ui left floated blue button"> Add a Ticket</button> */}
-                                    <CreateTicketModal/>
+                                    <CreateTicketModal project={project}/>
                                 </div>
                                 }
                             </div>
