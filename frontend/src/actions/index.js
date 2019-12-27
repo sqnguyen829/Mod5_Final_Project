@@ -151,13 +151,21 @@ export const removeProject = (project) => {
     }
 }
 
-export const handleNewProjectTicketAsnc = (newTicket) => {
-
+export const handleNewProjectTicketAsnc = (newTicket, projectId) => {
+    return {type:'NEW_PROJECT_TICKET', newTicket , projectId}
 }
 
-export const handleNewProjectTicket = (e) => {
+export const handleNewProjectTicket = (e,project) => {
     return dispatch =>{
-        fetch(ticketsURL,{
+        console.log(parseInt(localStorage.id))
+        console.log(project.id)
+        console.log(e.target[0].value)
+        console.log(e.target[1].value)
+        console.log(e.target[2].value)
+        console.log(e.target[3].value)
+        debugger
+        e.preventDefault()
+        fetch('http://localhost:3000/api/v1/project_tickets',{
             method:'POST',
             headers:{
                 'Accept': 'application/json',
@@ -165,8 +173,8 @@ export const handleNewProjectTicket = (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'ticket':{
-                    user_id:localStorage.id,
+                'project_ticket':{
+                    user_id:parseInt(localStorage.id),
                     project_id:project.id,
                     title:e.target[0].value,
                     desc:e.target[1].value,
@@ -178,7 +186,8 @@ export const handleNewProjectTicket = (e) => {
         })
         .then(res=>res.json())
         .then(newTicket=>{
-            dispatch(handleNewProjectTicket(newTicket))
+            debugger
+            dispatch(handleNewProjectTicketAsnc(newTicket,project.id))
         })
     }
 }
@@ -233,7 +242,7 @@ export const handleNewTicket = (e,project) => {
         })
         .then(res=>res.json())
         .then(newProject => {
-            dispatch(handleNewTicketAsnc(newProject))
+            dispatch(handleNewTicket(newProject))
         })
     }
 }

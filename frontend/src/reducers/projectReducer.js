@@ -48,11 +48,14 @@ const projectsReducer = (state = initialState, action) => {
                 displayProjects:action.payload.updatedProjects,
                 currentProjectDetail:action.payload.updatedProject
             }
-        // case 'NEW_PROJECT_TICKET':
-        //     return {
-        //         ...state,
-
-        //     }
+        case 'NEW_PROJECT_TICKET':
+            console.log(action.projectId)
+            debugger
+            return {
+                ...state,
+                displayProjects:[...state.projects.project_tickets, action.newTicket],
+                currentProjectDetail:[...state.currentProjectDetail.project_tickets, action.newTicket]
+            }
         default:
             return state
     }
