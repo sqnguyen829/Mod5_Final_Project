@@ -13,10 +13,7 @@ const initialState = {
         status: 'Open'
     }
 }
-// t.integer :user_id
-//       t.string :title
-//       t.string :desc
-//       t.string :status
+
 const projectsReducer = (state = initialState, action) => {
     switch(action.type){
         case 'ALL_PROJECTS':
@@ -51,21 +48,13 @@ const projectsReducer = (state = initialState, action) => {
                 displayProjects:action.payload.updatedProjects,
                 currentProjectDetail:action.payload.updatedProject
             }
+        // case 'NEW_PROJECT_TICKET':
+        //     return {
+        //         ...state,
+
+        //     }
         default:
             return state
     }
 }
 export default projectsReducer
-// let updatedNotes = this.state.notes.map(note => {
-//     if(note.id === newNote.id){
-//       return newNote
-//     }
-//     return note
-//   })
-
-//   this.setState({
-//     notes: updatedNotes,
-//     selectNote: newNote
-//   })
-// })
-// }

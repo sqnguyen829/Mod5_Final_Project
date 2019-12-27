@@ -11,6 +11,12 @@ const ticketsReducer = (state = initialState, action) => {
                 tickets:action.tickets,
                 displayTickets:action.tickets
             }
+        // case 'ADD_NEW_TICKET':
+        //     return {
+        //         ...state,
+        //         tickets:[...state.projects, action.newProject],
+        //         displayTickets:[...state.displayProjects, action.newProject]
+        //     }
         default:
             return state
     }
