@@ -46,10 +46,11 @@ function ShowProjectContainer(props) {
                                                     <option value="Open">Open</option>
                                                     <option value="Closed">Closed</option>
                                                     <option value="In Progress">In Progress</option>
+                                                    <option value="Completed">Completed</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <button className="ui blue button" type="submit">Create Project</button>
+                                        <button className="ui blue button" type="submit">Edit Project</button>
                                     </form>
                                     </div>
                                 </Modal>
@@ -58,8 +59,8 @@ function ShowProjectContainer(props) {
                             <div>
                                 {projectTicketCheck? 
                                     <div>
-                                        {project.project_tickets.map(project => <ProjectTicketCard project={project} key={project.id}/>)}
-                                        <CreateTicketModal/>
+                                        {project.project_tickets.map(ticket => <ProjectTicketCard ticket={ticket} key={project.id}/>)}
+                                        <CreateTicketModal project={project}/>
                                     </div>
                                 :
                                 <div className="ui raised very padded text container segment">

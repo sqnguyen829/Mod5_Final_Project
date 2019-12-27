@@ -108,7 +108,8 @@ export const handleEditProject = (e,project,projects) => {
             body: JSON.stringify({
                 'project':{
                     title:e.target[0].value,
-                    desc:e.target[1].value
+                    desc:e.target[1].value,
+                    status:e.target[2].value
                 }
             })
         })
@@ -149,6 +150,39 @@ export const removeProject = (project) => {
         )
     }
 }
+
+export const handleNewProjectTicketAsnc = (newTicket) => {
+
+}
+
+export const handleNewProjectTicket = (e) => {
+    return dispatch =>{
+        fetch(ticketsURL,{
+            method:'POST',
+            headers:{
+                'Accept': 'application/json',
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'ticket':{
+                    user_id:localStorage.id,
+                    project_id:project.id,
+                    title:e.target[0].value,
+                    desc:e.target[1].value,
+                    status:'Open',
+                    type_of_ticket:e.target[2].value,
+                    priority:e.target[3].value
+                }
+            })
+        })
+        .then(res=>res.json())
+        .then(newTicket=>{
+            dispatch(handleNewProjectTicket(newTicket))
+        })
+    }
+}
+
 /////////////////////////////////////////////////Project FN END//////////////////////////////////////////
 
 /////////////////////////////////////////////////Ticket FN Start//////////////////////////////////////////
@@ -173,10 +207,10 @@ export const handleTickets = dispatch => {
 }
 
 export const handleNewTicketAsnc = (ticket) => {
-    return {type:'ADD_TICKET', ticket}
+    return {type:'NEW_PROJECT_TICKET', ticket}
 }
 
-export const handleNewTicket = (e) => {
+export const handleNewTicket = (e,project) => {
     return dispatch => {
         e.preventDefault()
         fetch(ticketsURL, {

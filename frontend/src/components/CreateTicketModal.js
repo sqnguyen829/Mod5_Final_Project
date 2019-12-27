@@ -1,15 +1,14 @@
 import React from 'react'
 import { Button,Modal } from 'semantic-ui-react'
 import { useDispatch }from 'react-redux'
-
+import { handleNewProjectTicket } from '../actions'
 function CreateTicketModal(props) {
-
     const dispatch = useDispatch()
 
     return(
         <Modal trigger={<Button color='blue' size='mini'>Add a Ticket</Button>} >
             <div>
-                <form  onSubmit={(e)=> {console.log(e)
+                <form  onSubmit={(e)=> {dispatch(handleNewProjectTicket(e,props.project))
                                         e.preventDefault()}} className='ui form' >
                     <div className="two fields">
                         <div className="field">
