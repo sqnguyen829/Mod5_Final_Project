@@ -179,10 +179,25 @@ export const handleNewProjectTicket = (e,project) => {
         })
         .then(res=>res.json())
         .then(newTicket=>{
-            // console.log(newTicket)
-            // debugger
             dispatch(handleNewProjectTicketAsnc(newTicket,project.id))
         })
+    }
+}
+
+export const handleRemoveProjectTicketAsnc = (ticket, projectId) => {
+    return {type:'REMOVE_PROJECT_TICKET', ticket, projectId}
+}
+
+export const handleRemoveProjectTicket = (ticket,project) => {
+    return dispatch => {
+        fetch(`http://localhost:3000/api/v1/project_tickets/${ticket.id}`,{
+            method:"DELETE",
+            headers:{
+                Authorization: `Bearer ${localStorage.token}`
+            }
+        },
+            dispatch(handleRemoveProjectTicketAsnc(ticket,project.id))
+        )
     }
 }
 

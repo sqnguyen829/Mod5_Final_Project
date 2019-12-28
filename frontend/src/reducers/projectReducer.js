@@ -66,7 +66,29 @@ const projectsReducer = (state = initialState, action) => {
                 currentProjectDetail:{...state.currentProjectDetail, 
                     project_tickets: updateTicketList}
             }
-        
+            // case 'REMOVE_PROJECT':
+            //         return {
+            //             ...state,
+            //             projects:state.projects.filter(project => project.id !== action.project.id),
+            //             displayProjects:state.displayProjects.filter(project => project.id !== action.project.id)
+            //         }
+        case 'REMOVE_PROJECT_TICKET':
+            let projectList = state.displayProjects.map( project=>{
+                if(project.id === action.projectId){
+                    let checking =  {...project,project_tickets: project.project_tickets.filter(project_ticket => project_ticket.id !== action.ticket.id)}
+                    return checking
+                }else{
+                    return {...project}
+                }
+            })
+            return {
+                ...state,
+                displayProjects: projectList,
+                currentProjectDetail:{...state.currentProjectDetail,
+                    project_tickets: state.currentProjectDetail.project_tickets.filter(project_ticket => project_ticket.id !== action.ticket.id)
+                }
+                
+            }
         default:
             return state
     }
