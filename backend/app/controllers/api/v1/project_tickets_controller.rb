@@ -20,6 +20,16 @@ class Api::V1::ProjectTicketsController < ApplicationController
         render json: projectTicket
     end
 
+    def update
+        projectTicket = ProjectTicket.find(params[:id])
+        projectTicket.update(project_params)
+        render json: projectTicket
+    end
+
+    def destroy
+        projectTicket = ProjectTicket.find(params[:id])
+        projectTicket.destroy
+    end
     private
     def projectTicket_params
         params.require(:project_ticket).permit(:user_id,:project_id, :title, :desc, :status, :priority, :type_of_ticket)
