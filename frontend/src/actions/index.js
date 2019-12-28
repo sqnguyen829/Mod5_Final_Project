@@ -157,13 +157,6 @@ export const handleNewProjectTicketAsnc = (newTicket, projectId) => {
 
 export const handleNewProjectTicket = (e,project) => {
     return dispatch =>{
-        console.log(parseInt(localStorage.id))
-        console.log(project.id)
-        console.log(e.target[0].value)
-        console.log(e.target[1].value)
-        console.log(e.target[2].value)
-        console.log(e.target[3].value)
-        debugger
         e.preventDefault()
         fetch('http://localhost:3000/api/v1/project_tickets',{
             method:'POST',
@@ -186,7 +179,8 @@ export const handleNewProjectTicket = (e,project) => {
         })
         .then(res=>res.json())
         .then(newTicket=>{
-            debugger
+            // console.log(newTicket)
+            // debugger
             dispatch(handleNewProjectTicketAsnc(newTicket,project.id))
         })
     }

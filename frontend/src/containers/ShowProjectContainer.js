@@ -17,7 +17,7 @@ function ShowProjectContainer(props) {
                     <div className="ui two column very relaxed grid">
                         <div className="column">
                             <div className="ui raised very padded text container segment">
-                                <h6 className="mini ui right floated segment">Created by: {project.user.firstname + ' ' + project.user.lastname}</h6>
+                                <h6 className="mini ui right floated segment">Created by: {project.user? project.user.firstname + ' ' + project.user.lastname : 'Unknown'}</h6>
                                 <h2 className="ui header"> {project.title}</h2>
                                 <h4 className="ui horizontal divider header">
                                     Description
