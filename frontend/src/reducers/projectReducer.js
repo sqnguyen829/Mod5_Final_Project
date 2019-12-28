@@ -48,32 +48,25 @@ const projectsReducer = (state = initialState, action) => {
                 displayProjects:action.payload.updatedProjects,
                 currentProjectDetail:action.payload.updatedProject
             }
+////////////////////////////////////////////PROJECT_TICKET//////////////////////////////////////////////////////////////////////////////////////////////            
         case 'NEW_PROJECT_TICKET':
             let newProjectTicketList = []
             state.displayProjects.forEach(project=>{
                 if(project.id === action.projectId){
                     let projectTicketListUpdated = {...project,project_tickets: [...project.project_tickets, action.newTicket]}
-                    
-                    console.log(projectTicketListUpdated)
-                    debugger
                     newProjectTicketList = [...newProjectTicketList, projectTicketListUpdated]
                 }else{
-                    console.log(project)
                     newProjectTicketList = [...newProjectTicketList, project]
                 }
             })
-            console.log(newProjectTicketList)
-            debugger
-            //updateTicketList is an array of all the tickets for that project
             let updateTicketList = [...state.currentProjectDetail.project_tickets, action.newTicket]
-            console.log(updateTicketList)
-            debugger
             return {
                 ...state,
                 displayProjects:newProjectTicketList,
                 currentProjectDetail:{...state.currentProjectDetail, 
                     project_tickets: updateTicketList}
             }
+        
         default:
             return state
     }

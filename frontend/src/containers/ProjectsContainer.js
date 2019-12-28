@@ -42,6 +42,14 @@ function ProjectContainer(props) {
                         // checked={this.state.value === 'that'}
                         // onChange={this.handleChange}
                       />
+                      <Checkbox
+                        radio
+                        label='Completed'
+                        name='checkboxRadioGroup'
+                        value='that'
+                        // checked={this.state.value === 'that'}
+                        // onChange={this.handleChange}
+                      />
                     </Form.Field>
                 </Form>
                  {/* <div className="row">
