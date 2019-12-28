@@ -14,9 +14,9 @@ class Api::V1::ProjectTicketsController < ApplicationController
     end
 
     def create
-        byebug
+        # byebug
         projectTicket = ProjectTicket.create(projectTicket_params)
-        byebug
+        # byebug
         render json: projectTicket
     end
 
