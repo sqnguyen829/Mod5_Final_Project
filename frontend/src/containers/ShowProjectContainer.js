@@ -4,6 +4,7 @@ import { Button,Modal } from 'semantic-ui-react'
 import { handleEditProject } from '../actions'
 import ProjectTicketCard from '../components/ProjectTicketCard'
 import CreateTicketModal from '../components/CreateTicketModal'
+
 function ShowProjectContainer(props) {
     const project = useSelector(state=> state.projects.currentProjectDetail)
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ function ShowProjectContainer(props) {
         <div>
             {project? 
                 <div >
+                    {console.log(project)}
                     <div className="ui two column very relaxed grid">
                         <div className="column">
                             <div className="ui raised very padded text container segment">
@@ -41,8 +43,8 @@ function ShowProjectContainer(props) {
                                         </div>
                                         <label>Status</label>
                                         <div>
-                                            <div class="ui compact menu">
-                                                <select class="ui dropdown">
+                                            <div className="ui compact menu">
+                                                <select className="ui dropdown">
                                                     <option value="Open">Open</option>
                                                     <option value="Closed">Closed</option>
                                                     <option value="In Progress">In Progress</option>
@@ -59,7 +61,7 @@ function ShowProjectContainer(props) {
                             <div>
                                 {projectTicketCheck? 
                                     <div>
-                                        {project.project_tickets.map(ticket => <ProjectTicketCard ticket={ticket} key={project.id}/>)}
+                                        {project.project_tickets.map(ticket => <ProjectTicketCard ticket={ticket} key={ticket.id} project={project}/>)}
                                         <CreateTicketModal project={project}/>
                                     </div>
                                 :
