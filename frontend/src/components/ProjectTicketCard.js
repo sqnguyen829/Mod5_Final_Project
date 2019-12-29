@@ -25,7 +25,7 @@ function ProjectTicketCard(props) {
             <h5 className="mini ui right floated segment">Status: {props.ticket.status}</h5>
             <h5 className="mini ui right floated segment">Priority: {props.ticket.priority}</h5>
             <h5 className="mini ui right floated segment">Ticket Type: {props.ticket.type_of_ticket}</h5>
-            <EditTicketModal ticket={props.ticket}/>
+            <EditTicketModal ticket={props.ticket} project={props.project}/>
             <div className="ui divider"></div>
             <button onClick={()=> dispatch(handleRemoveProjectTicket(props.ticket,props.project))} className="mini ui left floated red button">Remove Ticket</button>
         </div>

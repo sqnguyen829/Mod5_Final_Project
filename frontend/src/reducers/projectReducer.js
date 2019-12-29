@@ -25,10 +25,6 @@ const projectsReducer = (state = initialState, action) => {
                 currentProjectDetail:action.projects[0]
             }
         case 'ADD_NEW_PROJECT':
-            console.log(action.newProject.user)
-            console.log("test")
-            console.log(action.newProject)
-            debugger
             return {
                 ...state,
                 projects:[...state.projects, action.newProject],

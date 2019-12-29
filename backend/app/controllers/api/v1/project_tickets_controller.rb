@@ -22,7 +22,7 @@ class Api::V1::ProjectTicketsController < ApplicationController
 
     def update
         projectTicket = ProjectTicket.find(params[:id])
-        projectTicket.update(project_params)
+        projectTicket.update(projectTicket_params)
         render json: projectTicket
     end
 
