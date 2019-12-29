@@ -184,6 +184,47 @@ export const handleNewProjectTicket = (e,project) => {
     }
 }
 
+export const handleEditProjectTicketAsnc = (payload) => {
+    return {type:'EDIT_PROJECT_TICKET', payload}
+}
+
+export const handleEditProjectTicket = (e,project,projects) => {
+    return dispatch => {
+        e.preventDefault()
+        fetch(`http://localhost:3000/api/v1/project_tickets/${ticket.id}`, {
+            method:'PATCH',
+            headers:{
+                'Accept': 'application/json',
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                project_ticket:{
+                    title:e.target[0].value,
+                    desc:e.target[1].value,
+                    status:e.target[2].value,
+                    type_of_ticket:e.target[3].value,
+                    priority:e.target[4].value
+                }
+            })
+        })
+        .then(res=>res.json())
+        .then(updatedTicket=>{
+            let updatedProjectTickets = project.project_tickets.map(project_ticket =>{
+                if(project_ticket.id === updatedProject.id){
+                    return updatedTicket
+                }
+                return project_ticket
+            })
+            let payload = {
+                updatedProjectTickets,
+                updatedTicket
+            }
+            dispatch(handleEditProjectTicketAsnc(payload))
+        })
+    }
+}
+
 export const handleRemoveProjectTicketAsnc = (ticket, projectId) => {
     return {type:'REMOVE_PROJECT_TICKET', ticket, projectId}
 }
