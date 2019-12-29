@@ -188,7 +188,7 @@ export const handleEditProjectTicketAsnc = (payload) => {
     return {type:'EDIT_PROJECT_TICKET', payload}
 }
 
-export const handleEditProjectTicket = (e,project,projects) => {
+export const handleEditProjectTicket = (e,project,ticket) => {
     return dispatch => {
         e.preventDefault()
         fetch(`http://localhost:3000/api/v1/project_tickets/${ticket.id}`, {
@@ -211,7 +211,7 @@ export const handleEditProjectTicket = (e,project,projects) => {
         .then(res=>res.json())
         .then(updatedTicket=>{
             let updatedProjectTickets = project.project_tickets.map(project_ticket =>{
-                if(project_ticket.id === updatedProject.id){
+                if(project_ticket.id === updatedTicket.id){
                     return updatedTicket
                 }
                 return project_ticket

@@ -48,7 +48,7 @@ const projectsReducer = (state = initialState, action) => {
                 displayProjects:action.payload.updatedProjects,
                 currentProjectDetail:action.payload.updatedProject
             }
-////////////////////////////////////////////PROJECT_TICKET//////////////////////////////////////////////////////////////////////////////////////////////            
+////////////////////////////////////////////PROJECT_TICKET OPERATING FROM INSIDE PROJECT//////////////////////////////////////////////////////////////////////////////////////////////            
         case 'NEW_PROJECT_TICKET':
             let newProjectTicketList = []
             state.displayProjects.forEach(project=>{
@@ -66,12 +66,6 @@ const projectsReducer = (state = initialState, action) => {
                 currentProjectDetail:{...state.currentProjectDetail, 
                     project_tickets: updateTicketList}
             }
-            // case 'REMOVE_PROJECT':
-            //         return {
-            //             ...state,
-            //             projects:state.projects.filter(project => project.id !== action.project.id),
-            //             displayProjects:state.displayProjects.filter(project => project.id !== action.project.id)
-            //         }
         case 'REMOVE_PROJECT_TICKET':
             let projectList = state.displayProjects.map( project=>{
                 if(project.id === action.projectId){
