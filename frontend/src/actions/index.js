@@ -86,6 +86,8 @@ export const handleNewProject = (e) => {
         })
         .then(res=>res.json())
         .then(newProject => {
+            console.log(newProject)
+            debugger
             dispatch(handleNewProjectAsnc(newProject))
         })
     }
