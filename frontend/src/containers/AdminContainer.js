@@ -15,6 +15,7 @@ function AdminContainer(props) {
     const dispatch = useDispatch()
     if (!projects.isProjectLoaded){
         dispatch(handleProjects)
+        dispatch(handleTickets)
     }
     return(
         <div>

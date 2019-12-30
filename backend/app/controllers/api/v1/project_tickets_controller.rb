@@ -1,14 +1,14 @@
 class Api::V1::ProjectTicketsController < ApplicationController
     def index
         projectTickets = ProjectTicket.all
-        render json: projectTickets, :include => [:user, :project_ticket_solvers => {:include => :user}]
+        render json: projectTickets, :include => [:project, :user, :project_ticket_solvers => {:include => :user}]
         # render json: projects, :include => [ :user, :project_tickets => {:include => [:user, :project_ticket_solvers => {:include => :user}]}]
     end
 
     def show 
         projectTicket = ProjectTicket.find_by(id: params(:id))
         if projectTicket
-            render json: projectTicket, :include => [:user, :project_ticket_solvers => {:include => :user}]
+            render json: projectTicket, :include => [:project, :user, :project_ticket_solvers => {:include => :user}]
         else
             render json: {message: "No project ticket found by that ID"}
         end
@@ -18,7 +18,7 @@ class Api::V1::ProjectTicketsController < ApplicationController
         # byebug
         projectTicket = ProjectTicket.create(projectTicket_params)
         # byebug
-        render json: projectTicket, :include => [:user, :project_ticket_solvers => {:include => :user}]
+        render json: projectTicket, :include => [:project, :user, :project_ticket_solvers => {:include => :user}]
     end
 
     def update
