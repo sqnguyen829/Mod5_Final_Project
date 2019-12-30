@@ -5,6 +5,7 @@ import { Form, Checkbox } from 'semantic-ui-react'
 
 function ProjectContainer(props) {
     const projects = useSelector(state => state.projects)
+    console.log(projects.displayProjects)
     return(
         <div>
             <div className="ui grid container">

@@ -28,8 +28,7 @@ const projectsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 projects:[...state.projects, action.newProject],
-                displayProjects:[...state.displayProjects, action.newProject],
-                currentProjectDetail:state.currentProjectDetail
+                displayProjects:[...state.displayProjects, action.newProject]
             }
         case 'CURRENT_PROJECT_DETAIL':
             return {
@@ -65,6 +64,47 @@ const projectsReducer = (state = initialState, action) => {
                 displayProjects:newProjectTicketList,
                 currentProjectDetail:{...state.currentProjectDetail, 
                     project_tickets: updateTicketList}
+            }
+        case 'EDIT_PROJECT_TICKET':
+            let EditProjectTicketList = []
+            state.displayProjects.forEach(project=>{
+                if(project.id === action.payload.projectId){
+                    let EditProjectTicketUpdated = {...project,
+                        project_tickets: project.project_tickets.map(project_ticket => {
+                            if(project_ticket.id === action.payload.updatedTicket.id){
+                                return action.payload.updatedTicket
+                            }
+                            return project_ticket
+                        })
+                    }
+                    EditProjectTicketList = [...EditProjectTicketList, EditProjectTicketUpdated]
+                }else{
+                    EditProjectTicketList = [...EditProjectTicketList, project]
+                }
+            })
+
+            let checker = {...state.currentProjectDetail,
+                project_tickets: state.currentProjectDetail.project_tickets.map(project_ticket=>{
+                    if(project_ticket.id === action.payload.updatedTicket.id){
+                        
+                        return action.payload.updatedTicket
+                    }
+                    return project_ticket
+                })
+            }
+            console.log(checker)
+            debugger
+            return {
+                ...state,
+                displayProjects: EditProjectTicketList,
+                currentProjectDetail: {...state.currentProjectDetail,
+                    project_tickets: state.currentProjectDetail.project_tickets.map(project_ticket=>{
+                        if(project_ticket === action.payload.updatedTicket.id){
+                            return action.payload.updatedTicket
+                        }
+                        return project_ticket
+                    })
+                }
             }
         case 'REMOVE_PROJECT_TICKET':
             let projectList = state.displayProjects.map( project=>{

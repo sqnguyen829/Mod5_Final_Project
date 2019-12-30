@@ -56,7 +56,6 @@ export const handleProjects = dispatch => {
     })
     .then(res => res.json())
     .then(allProjectData =>{
-        console.log(allProjectData)
         dispatch(handleProjectsAsnc(allProjectData))
     })
 }
@@ -86,6 +85,8 @@ export const handleNewProject = (e) => {
         })
         .then(res=>res.json())
         .then(newProject => {
+            console.log(newProject)
+            debugger
             dispatch(handleNewProjectAsnc(newProject))
         })
     }
@@ -217,6 +218,7 @@ export const handleEditProjectTicket = (e,project,ticket) => {
                 return project_ticket
             })
             let payload = {
+                projectId:project.id,
                 updatedProjectTickets,
                 updatedTicket
             }

@@ -18,13 +18,13 @@ class Api::V1::ProjectsController < ApplicationController
 
     def create
         project = Project.create(project_params)
-        render json: project
+        render json: project, :include => [ :user, :project_tickets => {:include => [:user, :project_ticket_solvers => {:include => :user}]}]
     end
 
     def update
         project = Project.find(params[:id])
         project.update(project_params)
-        render json: project, include: [:user,:project_members, :project_tickets, :users ]
+        render json: project, :include => [ :user, :project_tickets => {:include => [:user, :project_ticket_solvers => {:include => :user}]}]
     end
 
     def destroy
