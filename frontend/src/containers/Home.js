@@ -1,16 +1,16 @@
 import React from 'react';
-// import NavBar from '../components/NavBar'
-// import HomeGraph from '../components/HomeGraph'
-// import {Route, Switch} from 'react-router-dom'
 import AdminContainer from './AdminContainer'
-// import {useSelector, useDispatch } from 'react-redux'
-// import {handleProjects, handleUsers ,handleTickets} from '../actions/index'
+import HomeGraph from '../components/HomeGraph'
 
 function Home(props) {
     return(
         <div>
             {localStorage.token?
-                currentUserLogged(props)
+                <div>
+                    {currentUserLogged(props)}
+                    <h1>Home Page</h1>
+                    <HomeGraph/>
+                </div>
                 :
                 <div>
                     <h1>Go log in</h1>
