@@ -1,6 +1,9 @@
 import React from 'react';
+import {unloadProjects, unloadTickets, unloadUsers} from '../actions'
+import {useDispatch} from 'react-redux'
 
 function NavBar(props) {
+    const dispatch = useDispatch()
     return(
         <div className="ui inverted menu">
             <div className="header item" onClick={()=> props.history.push("/home")}>Home</div>
@@ -30,6 +33,9 @@ function NavBar(props) {
                 <div className="item" onClick={()=>
                     {
                         localStorage.clear()
+                        dispatch(unloadProjects)
+                        dispatch(unloadTickets)
+                        dispatch(unloadUsers)
                         props.history.push("/login")
                     }
                     }>Logout</div>

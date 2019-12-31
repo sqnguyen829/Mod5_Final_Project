@@ -17,6 +17,7 @@ function AdminContainer(props) {
     if (!projects.isProjectLoaded){
         dispatch(handleProjects)
         dispatch(handleTickets)
+        dispatch(handleUsers)
     }
     return(
         <div>

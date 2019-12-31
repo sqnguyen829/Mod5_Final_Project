@@ -1,5 +1,6 @@
-class Api::V1::UsersController < ApplicationControllerki
+class Api::V1::UsersController < ApplicationController
     skip_before_action :check_authentication, only: [:create]
+
     def index
         users = User.all
         render json: users, except: [:created_at, :updated_at]

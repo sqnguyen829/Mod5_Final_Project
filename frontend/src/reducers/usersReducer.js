@@ -1,7 +1,8 @@
 const initialState = {
     users:[{username:'test'}],
     displayUsers:['steven'],
-    isLoggedIn:false,
+    loadUsers:false,
+    currentManagedUser:null
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -11,7 +12,12 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users:action.users,
                 displayUsers:action.users,
-                isLoggedIn:!state.isLoggedIn
+                loadUsers:true
+            }
+        case 'UNLOAD_USERS':
+            return {
+                ...state,
+                isProjectLoaded:false
             }
         default:
             return state
