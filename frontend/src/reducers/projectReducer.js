@@ -114,6 +114,12 @@ const projectsReducer = (state = initialState, action) => {
                 }
                 
             }
+        case 'UNLOAD_PROJECTS':
+            debugger
+            return {
+                ...state,
+                isProjectLoaded:false
+            }
         default:
             return state
     }

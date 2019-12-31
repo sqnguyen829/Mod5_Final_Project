@@ -17,8 +17,6 @@ export const handleUsers = dispatch => {
     })
     .then(res => res.json())
     .then(userData =>{
-        console.log('fetching user')
-        console.log(userData)
         dispatch(handleUsersAsnc(userData))
     })  
 }
@@ -42,12 +40,18 @@ export const handleNewUser = (e) => {
         })
     })
 }
+
+export const handleUserRole = () =>{
+
+}
+
 /////////////////////////////////////////////////Project FN Start//////////////////////////////////////////
 export const handleProjectsAsnc = (allProjectData) => {
     return { type: 'ALL_PROJECTS', projects: allProjectData}
 }
 
 export const handleProjects = dispatch => {
+    console.log('attempting fetch project')
     fetch(projectsURL , {
         method: "GET",
         headers:{
@@ -85,8 +89,6 @@ export const handleNewProject = (e) => {
         })
         .then(res=>res.json())
         .then(newProject => {
-            console.log(newProject)
-            debugger
             dispatch(handleNewProjectAsnc(newProject))
         })
     }
@@ -261,8 +263,6 @@ export const handleTickets = dispatch => {
     })
     .then(res => res.json())
     .then(ticketData =>{
-        console.log('fetching ticket')
-        console.log(ticketData)
         dispatch(handleTicketsAsnc(ticketData))
     })  
 }
@@ -325,4 +325,14 @@ export const login = (obj,history) => {
             history.push('/home')
         }
     })
+}
+
+export const unloadProjects = () =>{
+    return {type:"UNLOAD_PROJECTS"}
+}
+export const unloadUsers = () =>{
+    return {type:"UNLOAD_USERS"}
+}
+export const unloadTickets = () =>{
+    return {type:"UNLOAD_TICKETS"}
 }

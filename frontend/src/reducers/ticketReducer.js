@@ -21,6 +21,11 @@ const ticketsReducer = (state = initialState, action) => {
         //         tickets:[...state.projects, action.newProject],
         //         displayTickets:[...state.displayProjects, action.newProject]
         //     }
+        case 'UNLOAD_TICKETS':
+            return {
+                ...state,
+                isTicketLoaded:false
+            }
         default:
             return state
     }
