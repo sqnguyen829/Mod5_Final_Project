@@ -8,6 +8,7 @@ import {useSelector, useDispatch } from 'react-redux'
 import {handleProjects, handleUsers ,handleTickets} from '../actions/index'
 import AddProjectForm from '../components/AddProjectForm';
 import ShowProjectContainer from './ShowProjectContainer'
+import ManageUsersContainer from './ManageUsersContainer'
 
 
 function AdminContainer(props) {
@@ -19,16 +20,15 @@ function AdminContainer(props) {
     }
     return(
         <div>
-            <div>
-                <NavBar history={props.history}/>
-                <Switch>
-                    {/* <Route path="/home/graph" component={HomeGraph}/> */}
-                    <Route exact path="/home/projects" component={ProjectsContainer}/>
-                    <Route path="/home/tickets" component={TicketContainer}/>
-                    <Route path="/home/addproject" component={AddProjectForm}/>
-                    <Route path='/home/projects/:id' component={ShowProjectContainer}/>
-                </Switch>
-            </div>
+            <NavBar history={props.history}/>
+            <Switch>
+                {/* <Route path="/home/graph" component={HomeGraph}/> */}
+                <Route exact path="/home/projects" component={ProjectsContainer}/>
+                <Route path="/home/tickets" component={TicketContainer}/>
+                <Route path="/home/addproject" component={AddProjectForm}/>
+                <Route path='/home/projects/:id' component={ShowProjectContainer}/>
+                <Route path='/home/manage_users' component={ManageUsersContainer}/>
+            </Switch>
         </div>
     )
 }
