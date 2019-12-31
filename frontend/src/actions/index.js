@@ -248,7 +248,7 @@ export const handleRemoveProjectTicket = (ticket,project) => {
 
 /////////////////////////////////////////////////Ticket FN Start//////////////////////////////////////////
 export const handleTicketsAsnc = (ticketsData) => {
-    return { type: 'ALL_TICKETS', tickets: ticketsData}
+    return { type: 'ALL_TICKETS', ticketsData}
 }
 
 export const handleTickets = dispatch => {
@@ -263,7 +263,7 @@ export const handleTickets = dispatch => {
     .then(ticketData =>{
         console.log('fetching ticket')
         console.log(ticketData)
-        dispatch(handleUsersAsnc(ticketData))
+        dispatch(handleTicketsAsnc(ticketData))
     })  
 }
 

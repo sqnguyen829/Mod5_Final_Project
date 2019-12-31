@@ -8,7 +8,6 @@ function Home(props) {
             {localStorage.token?
                 <div>
                     {currentUserLogged(props)}
-                    <h1>Home Page</h1>
                     <HomeGraph/>
                 </div>
                 :
