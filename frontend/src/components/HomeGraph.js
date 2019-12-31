@@ -1,7 +1,7 @@
 import React from 'react';
 import CanvasJSReact from '../lib/canvasjs.react'
 import { useSelector } from 'react-redux'
-let CanvasJS = CanvasJSReact.CanvasJS
+// let CanvasJS = CanvasJSReact.CanvasJS
 let CanvasJSChart = CanvasJSReact.CanvasJSChart
 
 function HomeGraph() {
@@ -12,7 +12,7 @@ function HomeGraph() {
             inProgress:0,
             completed:0
         }
-        projects.displayProjects.map(project=>{
+        projects.displayProjects.forEach(project=>{
             if(project.status === "Open"){
                 projectStatus = {...projectStatus,
                     open:projectStatus.open +1}

@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../components/NavBar'
-import HomeGraph from '../components/HomeGraph'
 import {Route, Switch} from 'react-router-dom'
 import ProjectsContainer from './ProjectsContainer'
 import TicketContainer from './TicketContainer'

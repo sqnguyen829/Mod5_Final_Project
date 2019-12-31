@@ -20,8 +20,8 @@ function CreateTicketModal(props) {
                     </div>
                     <label>Type of Ticket</label>
                     <div>
-                        <div class="ui compact menu">
-                            <select class="ui dropdown">
+                        <div className="ui compact menu">
+                            <select className="ui dropdown">
                                 <option value="Feature Request">Feature Request</option>
                                 <option value="Bug Fix Request">Bug Fix Request</option>
                                 <option value="Remova Feature Request">Remove Feature Request</option>
@@ -29,8 +29,8 @@ function CreateTicketModal(props) {
                             </select>
                         </div>
                     </div>
-                    <div class="ui compact menu">
-                        <select class="ui dropdown">
+                    <div className="ui compact menu">
+                        <select className="ui dropdown">
                             <option value="Low Priority">Low Priority</option>
                             <option value="Medium Priority">Medium Priority</option>
                             <option value="High Priority">High Priority</option>
