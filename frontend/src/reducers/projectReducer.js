@@ -97,14 +97,7 @@ const projectsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 displayProjects: EditProjectTicketList,
-                currentProjectDetail: {...state.currentProjectDetail,
-                    project_tickets: state.currentProjectDetail.project_tickets.map(project_ticket=>{
-                        if(project_ticket === action.payload.updatedTicket.id){
-                            return action.payload.updatedTicket
-                        }
-                        return project_ticket
-                    })
-                }
+                currentProjectDetail: checker
             }
         case 'REMOVE_PROJECT_TICKET':
             let projectList = state.displayProjects.map( project=>{

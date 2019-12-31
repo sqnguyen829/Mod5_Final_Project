@@ -7,8 +7,8 @@ const initialState = {
 const ticketsReducer = (state = initialState, action) => {
     switch(action.type){
         case 'ALL_TICKETS':
-            console.log(action.tickets)
-            debugger
+            // console.log(action.tickets)
+            // debugger
             return {
                 ...state,
                 tickets:action.ticketsData,
