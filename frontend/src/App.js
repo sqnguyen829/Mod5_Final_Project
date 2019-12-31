@@ -10,7 +10,6 @@ import  Home from './containers/Home'
 function App(props) {
     return (
       <BrowserRouter>
-      
           <Switch>
               <Route exact path = '/' component={DefaultPage}/>
               <Route path= '/login' component={Login}/>

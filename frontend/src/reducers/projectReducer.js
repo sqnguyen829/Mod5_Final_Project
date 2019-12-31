@@ -92,8 +92,6 @@ const projectsReducer = (state = initialState, action) => {
                     return project_ticket
                 })
             }
-            console.log(checker)
-            debugger
             return {
                 ...state,
                 displayProjects: EditProjectTicketList,
