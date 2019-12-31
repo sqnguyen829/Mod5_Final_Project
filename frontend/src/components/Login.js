@@ -1,11 +1,11 @@
 import React from 'react';
 import './Login.css'
 import {Link} from 'react-router-dom'
-import {useDispatch } from 'react-redux'
+// import {useDispatch } from 'react-redux'
 import {login} from '../actions'
 
 function Login(props) {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     
     return(
         <div className="ui middle aligned center aligned grid">

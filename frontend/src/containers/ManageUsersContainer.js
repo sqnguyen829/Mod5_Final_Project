@@ -8,12 +8,33 @@ function ManageUsersContainer(props) {
         <div className="ui grid">
             <div className="one column row">
                 <div className="ui raised very padded text container segment">
-                    <h2>Manage Users Role</h2>
-                    <label>User:</label>
-                    <div></div>
-                    <label>Role:</label>
-                    <div></div>
-                    <label>Email:</label>
+                    {users.currentManagedUser?
+                    <div>
+                        <form onSubmit = {()=> console.log('changing role')}>
+                        <h2>Manage Users Role</h2>
+                        <label>User: {users.currentManagedUser.firstname}</label>
+                        <div></div>
+                        <label>Email: {users.currentManagedUser.email}</label>
+                        <div></div>
+                        <div className="big ui label">
+                          Role
+                        </div>
+                        <select onChange={(e, defaultValue)=> defaultValue=e.target.value} defaultValue = 'N/A' className="mini ui dropdown">
+                            <option value="admin">admin</option>
+                            <option value="manager">manager</option>
+                            <option value="developer">developer</option>
+                            <option value="submitter">submitter</option>
+                            <option value="N/A">N/A</option>
+                        </select>
+                        <div></div>
+                        <button className="mini ui blue button" type='submit' > Confirm Change</button>
+                        </form>
+                    </div>
+                    :
+                    <div>
+                        <h2>Choose a user to adjust their Role.</h2>
+                    </div>
+                    }
                 </div>
             </div>
             <div className="three wide column">

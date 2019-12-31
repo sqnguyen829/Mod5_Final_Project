@@ -65,7 +65,7 @@ function ProjectContainer(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project} key={project.id} history={props.history}/>) :''}
+                                {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project} key={project.id} history={props.history}/>) :<div></div>}
                             </tbody>
                         </table>
                      {/* </div>

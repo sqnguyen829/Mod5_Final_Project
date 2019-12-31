@@ -41,8 +41,39 @@ export const handleNewUser = (e) => {
     })
 }
 
-export const handleUserRole = () =>{
+export const handleCurrentManageUser = (user) => {
+    return {type:"CHANGE_CURRENT_MANAGE_USER", user}
+}
 
+export const handleUserRoleAsnc = (payload) => {
+    return {type:"CHANGE_ROLE", payload}
+}
+
+export const handleUserRole = (e,user) =>{
+    return dispatch => {
+        e.preventDefault()
+        fetch(usersURL+`${user.id}`, {
+            method:"PATCH",
+            headers:{
+                'Accept': 'application/json',
+                Authorization: `Bearer ${localStorage.token}`,
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                'user':{
+                    role:e.target[0].value
+                }
+            })
+        })
+        .then(res=>res.json())
+        .then(updatedUser=>{
+            let payload = {
+                updatedUser,
+                user
+            }
+            dispatch(handleUserRoleAsnc(payload))
+        })
+    }
 }
 
 /////////////////////////////////////////////////Project FN Start//////////////////////////////////////////
