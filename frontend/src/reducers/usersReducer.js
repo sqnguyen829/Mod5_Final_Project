@@ -26,11 +26,9 @@ const usersReducer = (state = initialState, action) => {
                     }
                     return user
                 })
-
             return {
                 ...state,
-                displayUsers: updatedUsers,
-
+                displayUsers: updatedUsers
             }
         case 'UNLOAD_USERS':
             return {

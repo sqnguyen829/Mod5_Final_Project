@@ -2,11 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { handleNewUser } from '../actions'
 
-function Signup() {
+function Signup(props) {
     return(
         <div className="ui inverted segment">
             <div className="ui inverted form">
-                <form className="ui form" onSubmit={(e)=> handleNewUser(e)}>
+                <form className="ui form" onSubmit={(e)=> {handleNewUser(e)
+                                                            props.history.push('/login')}}>
                     <div className="ui equal width form">
                         <div className="fields">
                             <div className="field">
