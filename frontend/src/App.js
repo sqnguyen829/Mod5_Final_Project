@@ -9,8 +9,9 @@ import  Home from './containers/Home'
 const myBackgroundImg = require('./images/background_bluecode.jpg');
 const divStyle = {
   width: '100%',
-  height: '800px',
+  height: '100%',
   backgroundImage: `url(${myBackgroundImg})`,
+  backgroundAttachment: 'fixed',
   backgroundSize: 'cover'   
 };
 
