@@ -39,6 +39,11 @@ export const handleNewUser = (e) => {
             }
         })
     })
+    .then(res=>res.json())
+    .then(newUserData => {
+        console.log(newUserData)
+        debugger
+    })
 }
 
 export const handleCurrentManageUser = (user) => {

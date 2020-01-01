@@ -13,7 +13,7 @@ function App(props) {
           <Switch>
               <Route exact path = '/' component={DefaultPage}/>
               <Route path= '/login' component={Login}/>
-              <Route path= '/signup' component={Signup}/>
+              <Route path= '/signup' component={Signup} history={props.history}/>
               <Route path= '/home' component={Home} history={props.history}/>
           </Switch>
       </BrowserRouter>

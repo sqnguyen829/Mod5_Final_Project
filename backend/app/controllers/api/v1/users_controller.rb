@@ -19,7 +19,8 @@ class Api::V1::UsersController < ApplicationController
         user = User.new(user_params)
         if user.valid?
             user.save
-            render json: {user: UserSerializer.new(user)}, status: :created
+            render json: user, except: [:password_digest]
+            # render json: {user: UserSerializer.new(user)}, status: :created
         else
             render json: {error: 'Failed to create user.'}, status: :not_acceptable
         end

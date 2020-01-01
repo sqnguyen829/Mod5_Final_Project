@@ -1,16 +1,18 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import UserRow from '../components/UserRow'
+import { handleUserRole } from '../actions'
 // import { handleUsers } from '../actions/index'
 function ManageUsersContainer(props) {
     const users = useSelector(state=> state.users)
+    const dispatch = useDispatch()
     return(
         <div className="ui grid">
             <div className="one column row">
                 <div className="ui raised very padded text container segment">
                     {users.currentManagedUser?
                     <div>
-                        <form onSubmit = {()=> console.log('changing role')}>
+                        <form onSubmit = {(e)=> dispatch(handleUserRole(e, users.currentManagedUser))}>
                         <h2>Manage Users Role</h2>
                         <label>User: {users.currentManagedUser.firstname}</label>
                         <div></div>
