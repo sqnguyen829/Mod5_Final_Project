@@ -9,7 +9,7 @@ function NavBar(props) {
             <div className="header item" onClick={()=> props.history.push("/home")}>Home</div>
             <div onClick={()=> props.history.push("/home/projects")} className="item">Projects</div>
             <div onClick={()=> props.history.push("/home/tickets")} className="item">Tickets</div>
-            {localStorage.role==='admin'?<div onClick={()=> props.history.push("/home/manage_users")}className="item">Manage Users</div> : ''}
+            {(localStorage.role==="admin"||localStorage.role==="manager")? <div onClick={()=> props.history.push("/home/manage_users")}className="item">Manage Users</div> : ''}
                 <div className="ui dropdown item" tabIndex="0">
                 Dropdown
                 <i className="dropdown icon"></i>

@@ -1,7 +1,7 @@
 import React from 'react';
 import AdminContainer from './AdminContainer'
 import HomeGraph from '../components/HomeGraph'
-import ManagerContainer from './ManagerContainer';
+// import ManagerContainer from './ManagerContainer';
 import DeveloperContainer from './DeveloperContainer';
 import SubmitterContainer from './SubmitterContainer';
 

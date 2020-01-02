@@ -5,11 +5,10 @@ import { Form, Checkbox } from 'semantic-ui-react'
 
 function ProjectContainer(props) {
     const projects = useSelector(state => state.projects)
-    console.log(projects.displayProjects)
     return(
         <div>
             <div className="ui grid container">
-                <button onClick={()=> props.history.push("/home/addproject")} className="ui fluid small blue button">Add Projects</button>
+                {(localStorage.role==='admin'||localStorage.role==='manager')? <button onClick={()=> props.history.push("/home/addproject")} className="ui fluid small blue button">Add Projects</button> : ''}
                 <Form>
                     <div className="ui action input">
                         <input type="text" placeholder="Search by Project Name" />
