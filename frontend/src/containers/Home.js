@@ -3,6 +3,7 @@ import AdminContainer from './AdminContainer'
 import HomeGraph from '../components/HomeGraph'
 import ManagerContainer from './ManagerContainer';
 import DeveloperContainer from './DeveloperContainer';
+import SubmitterContainer from './SubmitterContainer';
 
 function Home(props) {
     return(
@@ -29,11 +30,13 @@ function currentUserLogged (props){
         case "admin":
             return <AdminContainer history={props.history}/>
         case "manager":
-            return <h1>Manager switch</h1>
+            return <AdminContainer history={props.history}/>
         case "developer":
                 return <DeveloperContainer history={props.history}/>
-        case "submitter" || "N/A":
-                return <h1>Submitter switch</h1>
+        case "submitter":
+                return <SubmitterContainer history={props.history}/>
+        case "N/A":
+                return <SubmitterContainer history={props.history}/>
         default:
             return null;
     }

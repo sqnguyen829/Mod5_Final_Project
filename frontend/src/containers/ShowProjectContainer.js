@@ -66,13 +66,12 @@ function ShowProjectContainer(props) {
                                 {projectTicketCheck? 
                                     <div>
                                         {project.project_tickets.map(ticket => <ProjectTicketCard ticket={ticket} key={ticket.id} project={project}/>)}
-                                        <CreateTicketModal project={project}/>
+                                        {localStorage.role!== 'N/A'? <CreateTicketModal project={project}/>:''}
                                     </div>
                                 :
                                 <div className="ui raised very padded text container segment">
                                     <h2 className="ui header">No tickets for this project</h2>
-                                    {/* <button className="mini ui left floated blue button"> Add a Ticket</button> */}
-                                    <CreateTicketModal project={project}/>
+                                    {localStorage.role!== 'N/A'? <CreateTicketModal project={project}/>:''}
                                 </div>
                                 }
                             </div>
