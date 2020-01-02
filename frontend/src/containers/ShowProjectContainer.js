@@ -27,35 +27,39 @@ function ShowProjectContainer(props) {
                                 <p>{project.desc}</p>
                                 <div className="ui divider"></div>
                                 <h5 className="mini ui right floated segment">Status: {project.status}</h5>
-                                <Modal trigger={<Button color='blue' size='mini'>Edit</Button>} >
-                                    <div>
-                                    <form  onSubmit={(e)=> {dispatch(handleEditProject(e,project,projects))
-                                                            props.history.push(`/home/projects/${project.id}`)}} className='ui form' >
-                                        <div className="two fields">
-                                            <div className="field">
-                                                <label>Project Title</label>
-                                                <input defaultValue={project.title} type="text"></input>
-                                            </div>
-                                        </div>
-                                        <div className="field">
-                                            <label>Description</label>
-                                            <textarea defaultValue={project.desc} type="text"></textarea>
-                                        </div>
-                                        <label>Status</label>
+                                { localStorage.role=== ('admin'||'manager')?
+                                    <Modal trigger={<Button color='blue' size='mini'>Edit</Button>} >
                                         <div>
-                                            <div className="ui compact menu">
-                                                <select className="ui dropdown">
-                                                    <option value="Open">Open</option>
-                                                    <option value="Closed">Closed</option>
-                                                    <option value="In Progress">In Progress</option>
-                                                    <option value="Completed">Completed</option>
-                                                </select>
+                                        <form  onSubmit={(e)=> {dispatch(handleEditProject(e,project,projects))
+                                                                props.history.push(`/home/projects/${project.id}`)}} className='ui form' >
+                                            <div className="two fields">
+                                                <div className="field">
+                                                    <label>Project Title</label>
+                                                    <input defaultValue={project.title} type="text"></input>
+                                                </div>
                                             </div>
+                                            <div className="field">
+                                                <label>Description</label>
+                                                <textarea defaultValue={project.desc} type="text"></textarea>
+                                            </div>
+                                            <label>Status</label>
+                                            <div>
+                                                <div className="ui compact menu">
+                                                    <select className="ui dropdown">
+                                                        <option value="Open">Open</option>
+                                                        <option value="Closed">Closed</option>
+                                                        <option value="In Progress">In Progress</option>
+                                                        <option value="Completed">Completed</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button className="ui blue button" type="submit">Edit Project</button>
+                                        </form>
                                         </div>
-                                        <button className="ui blue button" type="submit">Edit Project</button>
-                                    </form>
-                                    </div>
-                                </Modal>
+                                    </Modal>
+                                :
+                                ''
+                                }
                                 <button onClick={()=>props.history.push('/home/projects')} className="mini ui left floated blue button"> Back to Project List</button>
                             </div>
                             <div>

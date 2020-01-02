@@ -1,6 +1,8 @@
 import React from 'react';
 import AdminContainer from './AdminContainer'
 import HomeGraph from '../components/HomeGraph'
+import ManagerContainer from './ManagerContainer';
+import DeveloperContainer from './DeveloperContainer';
 
 function Home(props) {
     return(
@@ -29,7 +31,7 @@ function currentUserLogged (props){
         case "manager":
             return <h1>Manager switch</h1>
         case "developer":
-                return <h1>Developer switch</h1>
+                return <DeveloperContainer history={props.history}/>
         case "submitter" || "N/A":
                 return <h1>Submitter switch</h1>
         default:

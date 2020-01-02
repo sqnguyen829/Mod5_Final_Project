@@ -11,7 +11,7 @@ function NewProjectRow(props) {
             <td>{props.project.created_at}</td>
             <td>
               {props.project.status}
-              <button onClick={()=> dispatch(removeProject(props.project))} className="mini ui right floated blue button">Remove</button>
+              {localStorage.role === ('admin'||'manager')? <button onClick={()=> dispatch(removeProject(props.project))} className="mini ui right floated blue button">Remove</button> : ''}
               <button onClick={()=> {dispatch(handleShowProject(props.project))
                                     props.history.push(`/home/projects/${props.project.id}`)}} className="mini ui right floated blue button">Details</button>
             </td>
