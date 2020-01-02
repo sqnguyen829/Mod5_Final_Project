@@ -15,7 +15,6 @@ function ShowProjectContainer(props) {
         <div>
             {project? 
                 <div >
-                    {console.log(project)}
                     <div className="ui two column very relaxed grid">
                         <div className="column">
                             <div className="ui raised very padded text container segment">
@@ -27,8 +26,8 @@ function ShowProjectContainer(props) {
                                 <p>{project.desc}</p>
                                 <div className="ui divider"></div>
                                 <h5 className="mini ui right floated segment">Status: {project.status}</h5>
-                                { localStorage.role=== ('admin'||'manager')?
-                                    <Modal trigger={<Button color='blue' size='mini'>Edit</Button>} >
+                                { (localStorage.role==='admin'|| localStorage.role==='manager')?
+                                <Modal trigger={<Button color='blue' size='mini'>Edit</Button>}  >
                                         <div>
                                         <form  onSubmit={(e)=> {dispatch(handleEditProject(e,project,projects))
                                                                 props.history.push(`/home/projects/${project.id}`)}} className='ui form' >
