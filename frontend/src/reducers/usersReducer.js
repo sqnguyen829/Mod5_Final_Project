@@ -33,7 +33,7 @@ const usersReducer = (state = initialState, action) => {
         case 'UNLOAD_USERS':
             return {
                 ...state,
-                isProjectLoaded:false
+                loadUsers:false
             }
         default:
             return state

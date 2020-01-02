@@ -1,7 +1,6 @@
 import React from 'react';
 import {unloadProjects, unloadTickets, unloadUsers} from '../actions'
 import {useDispatch} from 'react-redux'
-
 function NavBar(props) {
     const dispatch = useDispatch()
     return(
@@ -11,7 +10,7 @@ function NavBar(props) {
             <div onClick={()=> props.history.push("/home/tickets")} className="item">Tickets</div>
             {(localStorage.role==="admin"||localStorage.role==="manager")? <div onClick={()=> props.history.push("/home/manage_users")}className="item">Manage Users</div> : ''}
                 <div className="ui dropdown item" tabIndex="0">
-                Dropdown
+                Hello {localStorage.firstname}
                 <i className="dropdown icon"></i>
                 <div className="menu transition hidden" tabIndex="-1">
                     <div className="item">Action</div>
@@ -33,9 +32,9 @@ function NavBar(props) {
                 <div className="item" onClick={()=>
                     {
                         localStorage.clear()
-                        dispatch(unloadProjects)
-                        dispatch(unloadTickets)
-                        dispatch(unloadUsers)
+                        dispatch(unloadProjects())
+                        dispatch(unloadTickets())
+                        dispatch(unloadUsers())
                         props.history.push("/login")
                     }
                     }>Logout</div>
