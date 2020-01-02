@@ -18,8 +18,8 @@ const ticketsReducer = (state = initialState, action) => {
         // case 'ADD_NEW_TICKET':
         //     return {
         //         ...state,
-        //         tickets:[...state.projects, action.newProject],
-        //         displayTickets:[...state.displayProjects, action.newProject]
+        //         tickets:[...state.tickets, action.newTicket],
+        //         displayTickets:[...state.displayTickets, action.newTicket]
         //     }
         case 'UNLOAD_TICKETS':
             return {

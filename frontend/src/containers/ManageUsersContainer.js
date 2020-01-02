@@ -40,7 +40,7 @@ function ManageUsersContainer(props) {
                 </div>
             </div>
             <div className="three wide column">
-                <div className="ui card" style={{overflow:"scroll",height:'35em'}}>
+                <div className="ui card" style={{overflow:"scroll",height:'20em'}}>
                     <div className="ui middle aligned animated list">
                         {users.loadUsers? users.displayUsers.map(user => <UserRow user={user} key={user.id}/>) : ''}
                     </div>
