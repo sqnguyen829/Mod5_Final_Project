@@ -5,9 +5,7 @@ import ProjectsContainer from './ProjectsContainer'
 import TicketContainer from './TicketContainer'
 import {useSelector, useDispatch } from 'react-redux'
 import {handleProjects, handleUsers ,handleTickets} from '../actions/index'
-import AddProjectForm from '../components/AddProjectForm';
 import ShowProjectContainer from './ShowProjectContainer'
-import ManageUsersContainer from './ManageUsersContainer'
 
 
 function DeveloperContainer(props) {
