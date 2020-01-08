@@ -22,7 +22,6 @@ function AdminContainer(props) {
         <div>
             <NavBar history={props.history}/> 
             <Switch>
-                {/* <Route path="/home/graph" component={HomeGraph}/> */}
                 <Route exact path="/home/projects" component={ProjectsContainer}/>
                 <Route path="/home/tickets" component={TicketContainer}/>
                 <Route path="/home/addproject" component={AddProjectForm}/>

@@ -371,3 +371,10 @@ export const unloadUsers = () =>{
 export const unloadTickets = () =>{
     return {type:"UNLOAD_TICKETS"}
 }
+
+export const showGraph = () => {
+    return {type: "SHOW_GRAPH"}
+}
+export const hideGraph = () => {
+    return {type: "HIDE_GRAPH"}
+}

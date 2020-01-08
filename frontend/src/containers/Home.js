@@ -1,17 +1,19 @@
 import React from 'react';
 import AdminContainer from './AdminContainer'
 import HomeGraph from '../components/HomeGraph'
-// import ManagerContainer from './ManagerContainer';
+import ManagerContainer from './ManagerContainer';
 import DeveloperContainer from './DeveloperContainer';
 import SubmitterContainer from './SubmitterContainer';
+import { useSelector } from 'react-redux'
 
 function Home(props) {
+    const checkGraph = useSelector( state=> state.graphs)
     return(
         <div>
             {localStorage.token?
                 <div>
                     {currentUserLogged(props)}
-                    <HomeGraph/>
+                    {checkGraph.displayGraph? <HomeGraph/> : ''}
                 </div>
                 :
                 <div>
@@ -30,6 +32,7 @@ function currentUserLogged (props){
         case "admin":
             return <AdminContainer history={props.history}/>
         case "manager":
+            console.log('manager')
             return <AdminContainer history={props.history}/>
         case "developer":
                 return <DeveloperContainer history={props.history}/>
