@@ -1,14 +1,18 @@
 import React from 'react';
-import {unloadProjects, unloadTickets, unloadUsers} from '../actions'
+import {unloadProjects, unloadTickets, unloadUsers, showGraph, hideGraph} from '../actions'
 import {useDispatch} from 'react-redux'
 function NavBar(props) {
     const dispatch = useDispatch()
     return(
         <div className="ui inverted menu">
-            <div className="header item" onClick={()=> props.history.push("/home")}>Home</div>
-            <div onClick={()=> props.history.push("/home/projects")} className="item">Projects</div>
-            <div onClick={()=> props.history.push("/home/tickets")} className="item">Tickets</div>
-            {(localStorage.role==="admin"||localStorage.role==="manager")? <div onClick={()=> props.history.push("/home/manage_users")}className="item">Manage Users</div> : ''}
+            <div className="header item" onClick={()=> {props.history.push("/home")
+                                                        dispatch(showGraph())}}>Home</div>
+            <div onClick={()=> {props.history.push("/home/projects")
+                                dispatch(hideGraph())}} className="item">Projects</div>
+            <div onClick={()=> {props.history.push("/home/tickets")
+                                dispatch(hideGraph())}} className="item">Tickets</div>
+            {(localStorage.role==="admin"||localStorage.role==="manager")? <div onClick={()=> {props.history.push("/home/manage_users")
+                                                                                                dispatch(hideGraph())}}className="item">Manage Users</div> : ''}
                 <div className="ui dropdown item" tabIndex="0">
                 Hello {localStorage.firstname}
                 <i className="dropdown icon"></i>
@@ -35,6 +39,7 @@ function NavBar(props) {
                         dispatch(unloadProjects())
                         dispatch(unloadTickets())
                         dispatch(unloadUsers())
+                        dispatch(showGraph())
                         props.history.push("/login")
                     }
                     }>Logout</div>

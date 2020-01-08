@@ -2,7 +2,6 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import UserRow from '../components/UserRow'
 import { handleUserRole } from '../actions'
-// import { handleUsers } from '../actions/index'
 function ManageUsersContainer(props) {
     const users = useSelector(state=> state.users)
     const dispatch = useDispatch()

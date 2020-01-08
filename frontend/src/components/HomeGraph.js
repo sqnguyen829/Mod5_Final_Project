@@ -1,6 +1,7 @@
 import React from 'react';
 import CanvasJSReact from '../lib/canvasjs.react'
 import { useSelector } from 'react-redux'
+import { Grid } from 'semantic-ui-react'
 // let CanvasJS = CanvasJSReact.CanvasJS
 let CanvasJSChart = CanvasJSReact.CanvasJSChart
 
@@ -137,6 +138,34 @@ function HomeGraph() {
 		}
 		
 		return (
+			// <Grid>
+			// 	<Grid.Row columns={3}>
+			// 		<Grid.Column>
+			// 			<CanvasJSChart options = {options} />
+			// 		</Grid.Column>
+			// 		<Grid.Column>
+			// 			<CanvasJSChart options = {ticketStat} />
+			// 		</Grid.Column>
+			// 		<Grid.Column>
+			// 			<CanvasJSChart options = {userStat} />
+			// 		</Grid.Column>
+			// 	</Grid.Row>
+			// </Grid>
+
+		// <div className="ui grid">
+		// 	<div className="column row">
+		// 		<div className="column">
+		// 			<CanvasJSChart options = {options} />
+		// 		</div>
+		// 		<div className="column">
+		// 			<CanvasJSChart options = {ticketStat} />
+		// 		</div>
+		// 		<div className="column">
+		// 			<CanvasJSChart options = {userStat} />
+		// 		</div>
+		// 	</div>
+		// </div>
+
 		<div className="">
 			<div className="row">
 				<div className="column">
