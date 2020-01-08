@@ -2,12 +2,14 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import UserRow from '../components/UserRow'
 import { handleUserRole } from '../actions'
+import UserGraph from '../components/UserGraph'
 function ManageUsersContainer(props) {
     const users = useSelector(state=> state.users)
     const dispatch = useDispatch()
     return(
+        <div className="ui grid container">
         <div className="ui grid">
-            <div className="one column row">
+            <div className="column row">
                 <div className="ui raised very padded text container segment">
                     {users.currentManagedUser?
                     <div>
@@ -44,6 +46,10 @@ function ManageUsersContainer(props) {
                         {users.loadUsers? users.displayUsers.map(user => <UserRow user={user} key={user.id}/>) : ''}
                     </div>
                 </div>
+            </div>
+        </div>
+            <div className="row">
+                <UserGraph/>
             </div>
         </div>
     )
