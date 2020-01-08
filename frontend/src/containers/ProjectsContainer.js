@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux'
 import NewProjectRow from '../components/NewProjectRow'
 import { Form, Checkbox } from 'semantic-ui-react'
+import ProjectGraph from '../components/ProjectGraph'
 
 function ProjectContainer(props) {
     const projects = useSelector(state => state.projects)
@@ -52,23 +53,22 @@ function ProjectContainer(props) {
                       />
                     </Form.Field>
                 </Form>
-                 {/* <div className="row">
-                     <div className="column"> */}
-                        <table className="ui celled striped table">
-                            <thead>
-                                <tr>
-                                    <th rowSpan="three wide column">Porject Name</th>
-                                    <th rowSpan="eight wide column">Descrption</th>
-                                    <th rowSpan="three  wide column">Project created on</th>
-                                    <th colSpan="two wide column">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project} key={project.id} history={props.history}/>) :<div></div>}
-                            </tbody>
-                        </table>
-                     {/* </div>
-                 </div> */}
+                    <table className="ui celled striped table">
+                        <thead>
+                            <tr>
+                                <th rowSpan="three wide column">Porject Name</th>
+                                <th rowSpan="eight wide column">Descrption</th>
+                                <th rowSpan="three  wide column">Project created on</th>
+                                <th colSpan="two wide column">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project} key={project.id} history={props.history}/>) :<div></div>}
+                        </tbody>
+                    </table>
+                    <div>
+                        <ProjectGraph/>
+                    </div>
              </div>
         </div>
         
