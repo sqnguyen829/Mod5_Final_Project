@@ -48,7 +48,7 @@ function ManageUsersContainer(props) {
                 </div>
             </div>
         </div>
-            <div className="row">
+            <div className = "sixteen wide column centered row">
                 <UserGraph/>
             </div>
         </div>

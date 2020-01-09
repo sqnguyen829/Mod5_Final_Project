@@ -66,7 +66,7 @@ function ProjectContainer(props) {
                             {projects.isProjectLoaded ? projects.displayProjects.map(project => <NewProjectRow project={project} key={project.id} history={props.history}/>) :<div></div>}
                         </tbody>
                     </table>
-                    <div>
+                    <div className = "sixteen wide column centered row">
                         <ProjectGraph/>
                     </div>
              </div>
