@@ -7,20 +7,24 @@ const initialState = {
 const ticketsReducer = (state = initialState, action) => {
     switch(action.type){
         case 'ALL_TICKETS':
-            // console.log(action.tickets)
-            // debugger
             return {
                 ...state,
                 tickets:action.ticketsData,
                 displayTickets:action.ticketsData,
                 isTicketLoaded:true
             }
-        // case 'ADD_NEW_TICKET':
-        //     return {
-        //         ...state,
-        //         tickets:[...state.tickets, action.newTicket],
-        //         displayTickets:[...state.displayTickets, action.newTicket]
-        //     }
+        case 'ADD_NEW_TICKET':
+            return {
+                ...state,
+                tickets:[...state.tickets, action.ticket],
+                displayTickets:[...state.displayTickets, action.ticket]
+            }
+        case 'REMOVE_TICKET':
+            return {
+                ...state,
+                tickets:state.tickets.filter( ticket=> ticket.id !== action.ticket.id),
+                displayTickets:state.displayTickets.filter( ticket=> ticket.id !== action.ticket.id)
+            }
         case 'UNLOAD_TICKETS':
             return {
                 ...state,

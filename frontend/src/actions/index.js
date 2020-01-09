@@ -302,36 +302,22 @@ export const handleTickets = dispatch => {
     })  
 }
 
-export const handleNewTicketAsnc = (ticket) => {
-    return {type:'NEW_PROJECT_TICKET', ticket}
-}
-
 export const handleNewTicket = (e,project) => {
-    return dispatch => {
-        e.preventDefault()
-        fetch(ticketsURL, {
-            method: 'POST',
-            headers:{
-                'Accept': 'application/json',
-                Authorization: `Bearer ${localStorage.token}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "project_ticket": {
-                    user_id:localStorage.id,
+    return {type:'ADD_NEW_TICKET', ticket:{
+                    user_id:parseInt(localStorage.id),
+                    project_id:project.id,
                     title:e.target[0].value,
                     desc:e.target[1].value,
-                    status:e.target[2].value,
+                    status:'Open',
+                    type_of_ticket:e.target[2].value,
                     priority:e.target[3].value,
-                    type_of_ticket:e.target[4].value
-                }
-            })
-        })
-        .then(res=>res.json())
-        .then(newProject => {
-            dispatch(handleNewTicket(newProject))
-        })
-    }
+                    project
+
+    }}
+}
+
+export const handleRemoveTicket = (ticket) => {
+    return {type:'REMOVE_TICKET', ticket}
 }
 
 /////////////////////////////////////////////////Ticket FN END//////////////////////////////////////////
