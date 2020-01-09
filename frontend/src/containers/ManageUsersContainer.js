@@ -15,7 +15,7 @@ function ManageUsersContainer(props) {
                     <div>
                         <form onSubmit = {(e)=> dispatch(handleUserRole(e, users.currentManagedUser))}>
                         <h2>Manage Users Role</h2>
-                        <label>User: {users.currentManagedUser.firstname}</label>
+                        <label>User: {users.currentManagedUser.firstname} {users.currentManagedUser.lastname}</label>
                         <div></div>
                         <label>Email: {users.currentManagedUser.email}</label>
                         <div></div>

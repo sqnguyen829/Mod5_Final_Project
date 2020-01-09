@@ -1,11 +1,10 @@
 import React from 'react' 
-// import { useDispatch } from 'react-redux'
-// import { handleShowProject, removeProject } from '../actions/index'
+// import TicketDetailOnHover from './TicketDetailOnHover'
 
 function NewTicketRow(props) {
     // const dispatch = useDispatch()
     return(
-        <tr>
+        <tr >
             <td>{props.ticket.title}</td>
             <td>{props.ticket.desc}</td>
             <td>{props.ticket.project.title}</td>

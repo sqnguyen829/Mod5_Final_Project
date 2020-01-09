@@ -14,7 +14,7 @@ function NavBar(props) {
             {(localStorage.role==="admin"||localStorage.role==="manager")? <div onClick={()=> {props.history.push("/home/manage_users")
                                                                                                 dispatch(hideGraph())}}className="item">Manage Users</div> : ''}
                 <div className="ui dropdown item" tabIndex="0">
-                Hello {localStorage.firstname}
+                Hello {localStorage.firstname} ! 
                 <i className="dropdown icon"></i>
                 <div className="menu transition hidden" tabIndex="-1">
                     <div className="item">Action</div>
@@ -25,6 +25,9 @@ function NavBar(props) {
                     <div className="divider"></div>
                     <div className="item">One more separated link</div>
                 </div>
+            </div>
+            <div className='ui black label'>
+                    User Role: {localStorage.role}
             </div>
             <div className="right menu">
                 <div className="item">
