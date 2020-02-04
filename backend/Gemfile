@@ -43,6 +43,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # This is for spring issue but it didn't solve the problem
+  # #https://stackoverflow.com/questions/38664754/spring-and-middleware-conflict/38666916#38666916
+  # gem "spring", group: :development
 end
 
 group :test do

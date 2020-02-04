@@ -281,6 +281,16 @@ export const handleRemoveProjectTicket = (ticket,project) => {
     }
 }
 
+export const handleProjectTextSearch = (newSearch) => {
+//in the project tab, search for text on submitting of the search button
+    return {type:'PROJECT_SEARCH', newSearch}
+}
+
+export const initiateProjectSearch = (projects, searchText) => {
+    let searchedProject = projects.filter(project => project.title.includes(searchText) )
+    return {type:'INITIATE_PROJECT_SEARCH', searchedProject}
+}
+
 /////////////////////////////////////////////////Project FN END//////////////////////////////////////////
 
 /////////////////////////////////////////////////Ticket FN Start//////////////////////////////////////////

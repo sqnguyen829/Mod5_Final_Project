@@ -36,7 +36,7 @@ function UserGraph() {
 			exportEnabled: true,
 			theme: "dark2", // "light1", "dark1", "dark2"
 			title:{
-				text: "User Role Stat"
+				text: "User Role Stats"
 			},
 			data: [{
 				type: "pie",

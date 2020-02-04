@@ -12,7 +12,7 @@ function ProjectGraph() {
             inProgress:0,
             completed:0
         }
-        projects.displayProjects.forEach(project=>{
+        projects.projects.forEach(project=>{
             if(project.status === "Open"){
                 projectStatus = {...projectStatus,
                     open:projectStatus.open +1}
@@ -42,7 +42,7 @@ function ProjectGraph() {
 					{ y: projectStatus.open, label: "Open" },
 					{ y: projectStatus.closed, label: "Closed" },
 					{ y: projectStatus.inProgress, label: "In Progress" },
-					{ y: projectStatus.completed, label: "Complated" }
+					{ y: projectStatus.completed, label: "Completed" }
 				]
 			}]
 		}

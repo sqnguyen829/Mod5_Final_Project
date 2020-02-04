@@ -42,7 +42,7 @@ function TicketGraph() {
 					{ y: ticketStatus.open, label: "Open" },
 					{ y: ticketStatus.closed, label: "Closed" },
 					{ y: ticketStatus.inProgress, label: "In Progress" },
-					{ y: ticketStatus.completed, label: "Complated" }
+					{ y: ticketStatus.completed, label: "Completed" }
 				]
 			}]
 		}

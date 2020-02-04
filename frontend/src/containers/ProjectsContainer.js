@@ -1,19 +1,21 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import NewProjectRow from '../components/NewProjectRow'
 import { Form, Checkbox } from 'semantic-ui-react'
 import ProjectGraph from '../components/ProjectGraph'
+import { handleProjectTextSearch, initiateProjectSearch } from '../actions'
 
 function ProjectContainer(props) {
     const projects = useSelector(state => state.projects)
+    const dispatch = useDispatch()
     return(
         <div>
             <div className="ui grid container">
                 {(localStorage.role==='admin'||localStorage.role==='manager')? <button onClick={()=> props.history.push("/home/addproject")} className="ui fluid small blue button">Add Projects</button> : ''}
                 <Form>
                     <div className="ui action input">
-                        <input type="text" placeholder="Search by Project Name" />
-                        <button className="ui button">Search</button>
+                        <input onChange = { (event)=> dispatch(handleProjectTextSearch(event.target.value)) }type="text" placeholder="Search by Project Name" />
+                        <button onClick={ ()=> dispatch(initiateProjectSearch(projects.projects, projects.projectSearch)) } className="ui button">Search</button>
                     </div>
                     <Form.Field>
                         Filter by Status
