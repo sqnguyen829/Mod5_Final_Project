@@ -1,7 +1,7 @@
 import React from 'react'
 import EditTicketModal from './EditTicketModal'
 import { useDispatch } from 'react-redux'
-import { handleRemoveProjectTicket } from '../actions'
+import { handleRemoveProjectTicket, handleRemoveTicket } from '../actions'
     // t.integer "user_id"
 //     t.integer "project_id"
 //     t.string "title"
@@ -27,7 +27,10 @@ function ProjectTicketCard(props) {
             <h5 className="mini ui right floated segment">Ticket Type: {props.ticket.type_of_ticket}</h5>
             {localStorage.role!=='N/A'?<div><EditTicketModal ticket={props.ticket} project={props.project}/>
             <div className="ui divider"></div>
-            <button onClick={()=> dispatch(handleRemoveProjectTicket(props.ticket,props.project))} className="mini ui left floated red button">Remove Ticket</button>
+            <button onClick={()=> {
+                                    dispatch(handleRemoveProjectTicket(props.ticket,props.project))
+                                    // dispatch(handleRemoveTicket(props.ticket))
+                                    }} className="mini ui left floated red button">Remove Ticket</button>
             </div>
             :
             ''}

@@ -2,6 +2,7 @@ const initialState = {
     projects:[{projects:'project 1'}],
     displayProjects:[],
     isProjectLoaded:false,
+    projectSearch:'',
     currentProjectDetail:{
         user_id: 1,
         title: 'Testing',
@@ -44,8 +45,19 @@ const projectsReducer = (state = initialState, action) => {
         case 'EDIT_PROJECT':
             return {
                 ...state,
-                displayProjects:action.payload.updatedProjects,
-                currentProjectDetail:action.payload.updatedProject
+                project: action.payload.updatedProjects,
+                displayProjects: action.payload.updatedProjects,
+                currentProjectDetail: action.payload.updatedProject
+            }
+        case 'PROJECT_SEARCH':
+            return {
+                ...state,
+                projectSearch: action.newSearch
+            }
+        case 'INITIATE_PROJECT_SEARCH':
+            return {
+                ...state,
+                displayProjects: action.searchedProject
             }
 ////////////////////////////////////////////PROJECT_TICKET OPERATING FROM INSIDE PROJECT//////////////////////////////////////////////////////////////////////////////////////////////            
         case 'NEW_PROJECT_TICKET':

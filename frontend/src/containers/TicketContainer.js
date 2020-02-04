@@ -19,7 +19,7 @@ function TicketContainer(props) {
                     {tickets.isTicketLoaded ? tickets.displayTickets.map(ticket => <NewTicketRow ticket={ticket} key={ticket.id} history={props.history}/>) :''}
                 </tbody>
             </table>
-            <div>
+            <div className = "sixteen wide column centered row">
                 <TicketGraph/>
             </div>
         </div>
