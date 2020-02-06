@@ -26,40 +26,40 @@ function ProjectContainer(props) {
                         label='All'
                         name='checkboxRadioGroup'
                         value='all'
-                        checked={projects.projectCheck === 'all'}
-                        onChange={() => dispatch(handleCheckFilter(projects, 'all'))}
+                        checked={projects.projectCheck === 'All'}
+                        onChange={() => dispatch(handleCheckFilter(projects, 'All'))}
                       />
                       <Checkbox
                         radio
                         label='Open'
                         name='checkboxRadioGroup'
                         value='open'
-                        checked={projects.projectCheck === 'open'}
-                        onChange={() => dispatch(handleCheckFilter(projects, 'open'))}
+                        checked={projects.projectCheck === 'Open'}
+                        onChange={() => dispatch(handleCheckFilter(projects, 'Open'))}
                       />
                       <Checkbox
                         radio
                         label='Closed'
                         name='checkboxRadioGroup'
                         value='closed'
-                        checked={projects.projectCheck === 'closed'}
-                        onChange={() => dispatch(handleCheckFilter(projects, 'closed'))}
+                        checked={projects.projectCheck === 'Closed'}
+                        onChange={() => dispatch(handleCheckFilter(projects, 'Closed'))}
                       />
                       <Checkbox
                         radio
                         label='In Progress'
                         name='checkboxRadioGroup'
                         value='in progress'
-                        checked={projects.projectCheck === 'in progress'}
-                        onChange={() => dispatch(handleCheckFilter(projects, 'in progress'))}
+                        checked={projects.projectCheck === 'In progress'}
+                        onChange={() => dispatch(handleCheckFilter(projects, 'In Progress'))}
                       />
                       <Checkbox
                         radio
                         label='Completed'
                         name='checkboxRadioGroup'
                         value='completed'
-                        checked={projects.projectCheck === 'completed'}
-                        onChange={() => dispatch(handleCheckFilter(projects, 'completed'))}
+                        checked={projects.projectCheck === 'Completed'}
+                        onChange={() => dispatch(handleCheckFilter(projects, 'Completed'))}
                       />
                     </Form.Field>
                 </Form>

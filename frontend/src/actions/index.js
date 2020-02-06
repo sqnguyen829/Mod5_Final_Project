@@ -292,11 +292,14 @@ export const initiateProjectSearch = (projects, searchText) => {
 
 export const handleCheckFilter = (projects, checkType) => {
     console.log(checkType)
-    // debugger
-    // if(checkType === 'all'){
-
-    // }
-    return { type:'CHANGE_PROJECT_CHECK_FILTER', checkType }
+    let updatedProjects = projects.projects
+    if(checkType === 'All'){
+        updatedProjects = projects.projects
+    }
+    else{
+        updatedProjects = projects.projects.filter(project => project.status === checkType)
+    }
+    return { type:'CHANGE_PROJECT_CHECK_FILTER', updatedProjects, checkType }
 }
 /////////////////////////////////////////////////Project FN END//////////////////////////////////////////
 
