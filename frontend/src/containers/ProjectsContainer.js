@@ -15,7 +15,7 @@ function ProjectContainer(props) {
                 <Form>
                     <div className="ui action input">
                         <input onChange = { (event)=> dispatch(handleProjectTextSearch(event.target.value)) }type="text" placeholder="Search by Project Name" />
-                        <button onClick={ ()=> dispatch(initiateProjectSearch(projects.projects, projects.projectSearch)) } className="ui button">Search</button>
+                        <button onClick={ ()=> dispatch(initiateProjectSearch(projects)) } className="ui button">Search</button>
                     </div>
                     <Form.Field>
                         Filter by Status
@@ -50,7 +50,7 @@ function ProjectContainer(props) {
                         label='In Progress'
                         name='checkboxRadioGroup'
                         value='in progress'
-                        checked={projects.projectCheck === 'In progress'}
+                        checked={projects.projectCheck === 'In Progress'}
                         onChange={() => dispatch(handleCheckFilter(projects, 'In Progress'))}
                       />
                       <Checkbox
