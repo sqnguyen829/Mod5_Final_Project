@@ -4,7 +4,7 @@ const initialState = {
     filterProjects:[],
     isProjectLoaded:false,
     projectSearch:'',
-    projectCheck:'all',
+    projectCheck:'All',
     currentProjectDetail:{
         user_id: 1,
         title: 'Testing',
@@ -59,12 +59,15 @@ const projectsReducer = (state = initialState, action) => {
         case 'INITIATE_PROJECT_SEARCH':
             return {
                 ...state,
-                displayProjects: action.searchedProject
+                displayProjects: action.searchedProject,
+                // projectSearch: '',
+                filterProjects: action.searchedProject
             }
         case 'CHANGE_PROJECT_CHECK_FILTER':
             return {
                 ...state,
                 displayProjects: action.updatedProjects,
+                filterProjects: action.updatedProjects,
                 projectCheck: action.checkType
             }
 ////////////////////////////////////////////PROJECT_TICKET OPERATING FROM INSIDE PROJECT//////////////////////////////////////////////////////////////////////////////////////////////            

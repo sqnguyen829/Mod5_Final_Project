@@ -285,19 +285,21 @@ export const handleProjectTextSearch = (newSearch) => {
     return {type:'PROJECT_SEARCH', newSearch}
 }
 
-export const initiateProjectSearch = (projects, searchText) => {
-    let searchedProject = projects.filter(project => project.title.includes(searchText) )
+export const initiateProjectSearch = (projects) => {
+    let searchedProject = projects.projects.filter(project => project.title.includes(projects.projectSearch))
+    if(projects.projectCheck != 'All'){
+        searchedProject = projects.filterProjects.filter(project => project.title.includes(projects.projectSearch))
+    }
     return {type:'INITIATE_PROJECT_SEARCH', searchedProject}
 }
 
 export const handleCheckFilter = (projects, checkType) => {
-    console.log(checkType)
     let updatedProjects = projects.projects
-    if(checkType === 'All'){
-        updatedProjects = projects.projects
-    }
-    else{
-        updatedProjects = projects.projects.filter(project => project.status === checkType)
+    if(checkType !== 'All'){
+        if(projects.projectSearch != ''){
+            updatedProjects = projects.projects.filter(project => project.status === checkType)
+        }
+        updatedProjects = updatedProjects.filter(project => project.status === checkType)
     }
     return { type:'CHANGE_PROJECT_CHECK_FILTER', updatedProjects, checkType }
 }
