@@ -282,7 +282,6 @@ export const handleRemoveProjectTicket = (ticket,project) => {
 }
 
 export const handleProjectTextSearch = (newSearch) => {
-//in the project tab, search for text on submitting of the search button
     return {type:'PROJECT_SEARCH', newSearch}
 }
 
@@ -291,6 +290,17 @@ export const initiateProjectSearch = (projects, searchText) => {
     return {type:'INITIATE_PROJECT_SEARCH', searchedProject}
 }
 
+export const handleCheckFilter = (projects, checkType) => {
+    console.log(checkType)
+    let updatedProjects = projects.projects
+    if(checkType === 'All'){
+        updatedProjects = projects.projects
+    }
+    else{
+        updatedProjects = projects.projects.filter(project => project.status === checkType)
+    }
+    return { type:'CHANGE_PROJECT_CHECK_FILTER', updatedProjects, checkType }
+}
 /////////////////////////////////////////////////Project FN END//////////////////////////////////////////
 
 /////////////////////////////////////////////////Ticket FN Start//////////////////////////////////////////

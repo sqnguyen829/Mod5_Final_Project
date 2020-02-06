@@ -7,18 +7,18 @@ function HomeGraph() {
 		return(
 			<div>
 				<div >
-					<div class="ui inverted segment">
+					<div className="ui inverted segment">
 					<ProjectGraph/>
 					</div>
 				</div>
-				<div class="ui right aligned grid">
-					<div class="right floated left aligned six wide column">
-						<div class="ui inverted segment">
+				<div className="ui right aligned grid">
+					<div className="right floated left aligned six wide column">
+						<div className="ui inverted segment">
 						<TicketGraph/>
 						</div>
 					</div>
-					<div class="left floated right aligned six wide column">
-						<div class="ui inverted segment">
+					<div className="left floated right aligned six wide column">
+						<div className="ui inverted segment">
 						<UserGraph/>
 						</div>
 					</div>
