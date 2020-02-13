@@ -19,6 +19,7 @@ const initialState = {
             pwconfirm:'',
         }
     },
+    loginCheck:false,
     clearValidation:false
 }
 
@@ -65,6 +66,11 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loadUsers:false
+            }
+        case 'LOGIN_ERROR':
+            return {
+                ...state,
+                loginCheck:action.check
             }
         default:
             return state

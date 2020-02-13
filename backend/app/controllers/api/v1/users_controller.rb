@@ -22,7 +22,8 @@ class Api::V1::UsersController < ApplicationController
             render json: user, except: [:password_digest]
             # render json: {user: UserSerializer.new(user)}, status: :created
         else
-            render json: {error: 'Failed to create user.'}, status: :not_acceptable
+            # errorMsg = user.errors.full_messages
+            render json: {error: 'Username or email has been taken.'}, status: :not_acceptable
         end
     end
 
