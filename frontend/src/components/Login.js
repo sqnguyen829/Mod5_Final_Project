@@ -1,11 +1,15 @@
 import React from 'react';
 import './Login.css'
 import {Link} from 'react-router-dom'
-// import {useDispatch } from 'react-redux'
-import {login} from '../actions'
+import {useDispatch, useSelector } from 'react-redux'
+import {login, handleClearUserValidation} from '../actions'
 
 function Login(props) {
-    // const dispatch = useDispatch()
+    const users = useSelector(state => state.users)
+    const dispatch = useDispatch()
+    if (users.clearValidation){
+        dispatch(handleClearUserValidation())
+    }
     
     return(
         <div className="ui middle aligned center aligned grid">

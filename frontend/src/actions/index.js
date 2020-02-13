@@ -20,30 +20,106 @@ export const handleUsers = dispatch => {
         dispatch(handleUsersAsnc(userData))
     })  
 }
+///////////////////////////////////////////////////////// VALIDATION Start////////////////////////////////////////////////////////////////////////////////////
+//the idea behind this validation came from here https://www.telerik.com/blogs/up-and-running-with-react-form-validation
+//This is a premade regex to validate emails
+// const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
 
-export const handleNewUser = (e) => {
-    e.preventDefault()
-    fetch(usersURL, {
-        method: 'POST',
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "user": {
-                username:e.target[2].value,
-                email:e.target[3].value,
-                password:e.target[4].value,
-                role:'N/A',
-                firstname:e.target[0].value,
-                lastname:e.target[1].value,
-            }
-        })
-    })
-    .then(res=>res.json())
-    .then(newUserData => {
-        console.log(newUserData)
-    })
+export const handleValidation = (e, validationData) => {
+    const { name, value } = e.target
+    const validData = validationData
+    const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
+    switch(name) {
+        case 'firstname':
+            validData.errors.firstname = value.length < 1 ? 'First name must be filled in!' : ''
+            validData.firstname = value
+            break
+        case 'lastname':
+            validData.errors.lastname = value.length < 1 ? 'Last name must be filled in!' : ''
+            validData.lastname = value
+            break
+        case 'username':
+            validData.errors.username = value.length < 3 ? 'Username must be 3 characters long!' : ''
+            validData.username = value
+            break
+        case 'email':
+            validData.errors.email = validEmailRegex.test(value) ? '' : 'Email is not valid!'
+            validData.email = value
+            break
+        case 'password':
+            validData.errors.password = value.length < 1 ? 'Password needs to be filled in!' : ''
+            validData.password = value
+            break
+        case 'pwconfirm':
+            validData.errors.pwconfirm = validData.password !== value? 'Password does not match!' : ''
+            validData.pwconfirm = value
+            break            
+        default:
+            break
+    }
+    return {type: 'VALID_SIGN_UP', validData}
 }
+
+export const validateForm = (errors) => {
+    let valid = true;
+    Object.values(errors).forEach(
+      // if we have an error string set valid to false
+      (val) => val.length > 0 && (valid = false)
+    )
+    return valid;
+}
+
+export const handleNewUser = (e, errors, props) => {
+    e.preventDefault()
+    if(validateForm(errors)) {
+        console.info('Valid Form')
+        fetch(usersURL, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "user": {
+                    username:e.target[2].value,
+                    email:e.target[3].value,
+                    password:e.target[4].value,
+                    role:'N/A',
+                    firstname:e.target[0].value,
+                    lastname:e.target[1].value,
+                }
+            })
+        })
+        .then(res=>res.json())
+        .then(newUserData => {
+            console.log(newUserData)
+        })
+        props.history.push('/login')
+        
+      }else{
+        console.error('Invalid Form')
+    }
+}
+
+export const handleClearUserValidation = () => {
+    let payload = {
+        firstname:null,
+        lastname:null,
+        username:null,
+        email:null,
+        password:null,
+        pwconfirm:null,
+        errors:{
+            firstname:'',
+            lastname:'',
+            username:'',
+            email:'',
+            password:'',
+            pwconfirm:'',
+        }
+    }
+    return {type:"CLEAR_USER_VALIDATION", payload }
+}
+///////////////////////////////////////////////////////// VALIDATION End////////////////////////////////////////////////////////////////////////////////////
 
 export const handleCurrentManageUser = (user) => {
     return {type:"CHANGE_CURRENT_MANAGE_USER", user}
@@ -196,7 +272,7 @@ export const handleNewProjectTicketAsnc = (newTicket, projectId) => {
 export const handleNewProjectTicket = (e,project) => {
     return dispatch =>{
         e.preventDefault()
-        fetch('http://localhost:3000/api/v1/project_tickets',{
+        fetch('http://localhost:3000/api/v1/project_tickets', {
             method:'POST',
             headers:{
                 'Accept': 'application/json',
@@ -287,7 +363,7 @@ export const handleProjectTextSearch = (newSearch) => {
 
 export const initiateProjectSearch = (projects) => {
     let searchedProject = projects.projects.filter(project => project.title.includes(projects.projectSearch))
-    if(projects.projectCheck != 'All'){
+    if(projects.projectCheck !== 'All'){
         searchedProject = projects.filterProjects.filter(project => project.title.includes(projects.projectSearch))
     }
     return {type:'INITIATE_PROJECT_SEARCH', searchedProject}
@@ -296,7 +372,7 @@ export const initiateProjectSearch = (projects) => {
 export const handleCheckFilter = (projects, checkType) => {
     let updatedProjects = projects.projects
     if(checkType !== 'All'){
-        if(projects.projectSearch != ''){
+        if(projects.projectSearch !== ''){
             updatedProjects = projects.projects.filter(project => project.status === checkType)
         }
         updatedProjects = updatedProjects.filter(project => project.status === checkType)
