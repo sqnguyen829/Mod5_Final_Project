@@ -2,7 +2,24 @@ const initialState = {
     users:[{username:'test'}],
     displayUsers:['steven'],
     loadUsers:false,
-    currentManagedUser:null
+    currentManagedUser:null,
+    signUpValidation:{
+        firstname:null,
+        lastname:null,
+        username:null,
+        email:null,
+        password:null,
+        pwconfirm:null,
+        errors:{
+            firstname:'',
+            lastname:'',
+            username:'',
+            email:'',
+            password:'',
+            pwconfirm:'',
+        }
+    },
+    clearValidation:false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -13,6 +30,20 @@ const usersReducer = (state = initialState, action) => {
                 users:action.users,
                 displayUsers:action.users,
                 loadUsers:true
+            }
+        case 'VALID_SIGN_UP':
+            console.log(action.validData)
+            return {
+                ...state,
+                signUpValidation:action.validData,
+                clearValidation:true
+            }
+        case 'CLEAR_USER_VALIDATION':
+            console.log(action.payload)
+            return {
+                ...state,
+                signUpValidation:action.payload,
+                clearValidation:false
             }
         case 'CHANGE_CURRENT_MANAGE_USER':
             return {

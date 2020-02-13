@@ -72,9 +72,7 @@ function ProjectContainer(props) {
                                 <th colSpan="two wide column">Status</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {projects.isProjectLoaded? projects.displayProjects.map(project => <NewProjectRow project={project} key={project.id} history={props.history}/>) :''}
-                        </tbody>
+                        <tbody>{projects.isProjectLoaded? projects.displayProjects.map(project =><NewProjectRow project={project} key={project.id} history={props.history}/>):''}</tbody>
                     </table>
                     <div className = "sixteen wide column centered row">
                         <ProjectGraph/>
