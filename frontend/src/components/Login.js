@@ -10,13 +10,16 @@ function Login(props) {
     if (users.clearValidation){
         dispatch(handleClearUserValidation())
     }
+    if(localStorage.errorMsg){
+        localStorage.clear()
+    }
     
     return(
         <div className="ui middle aligned center aligned grid">
             <div className="column">
                 <form onSubmit={async (e)=> {
                     e.preventDefault()
-                    login(e.target, props.history)
+                    login(e.target, props.history, dispatch)
                     }} className="ui large form">
                         
                     <div className="ui stacked secondary  segment">
@@ -37,6 +40,7 @@ function Login(props) {
                                     <input type="password" name="password" placeholder="Password"></input>
                             </div>
                         </div>
+                        {users.loginCheck? <span>Username or password is invalid.</span> : ''}
                         <button className="ui fluid large blue submit button" type="submit" >Login</button>
                     </div>
                     <div className="ui error message"></div>

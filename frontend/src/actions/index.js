@@ -26,6 +26,7 @@ export const handleUsers = dispatch => {
 // const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
 
 export const handleValidation = (e, validationData) => {
+    
     const { name, value } = e.target
     const validData = validationData
     const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
@@ -92,9 +93,15 @@ export const handleNewUser = (e, errors, props) => {
         .then(res=>res.json())
         .then(newUserData => {
             console.log(newUserData)
+            if(newUserData.error !== 'Username or email has been taken.'){
+                props.history.push('/login')
+                if(localStorage.errorMsg){
+                    localStorage.errorMsg.clear()
+                }
+            }else{
+                localStorage.errorMsg = newUserData.error
+            }
         })
-        props.history.push('/login')
-        
       }else{
         console.error('Invalid Form')
     }
@@ -420,7 +427,8 @@ export const handleRemoveTicket = (ticket) => {
 
 /////////////////////////////////////////////////Ticket FN END//////////////////////////////////////////
 
-export const login = (obj,history) => {
+export const login = (obj,history, dispatch) => {
+    console.log('login')
     fetch("http://localhost:3000/api/v1/login", {
         method: 'POST',
         headers:{
@@ -442,8 +450,15 @@ export const login = (obj,history) => {
         localStorage.token = userInfo.token
         if(userInfo.token){
             history.push('/home')
+            dispatch(loginError(false))
+        }else{
+            dispatch(loginError(true))
         }
     })
+}
+
+export const loginError = (check) => {
+    return{ type:'LOGIN_ERROR', check }
 }
 
 export const unloadProjects = () =>{
