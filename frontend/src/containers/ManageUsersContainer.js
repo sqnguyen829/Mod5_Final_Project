@@ -17,6 +17,8 @@ function ManageUsersContainer(props) {
                         <h2>Manage Users Role</h2>
                         <label>User: {users.currentManagedUser.firstname} {users.currentManagedUser.lastname}</label>
                         <div></div>
+                        <label>Username: {users.currentManagedUser.username}</label>
+                        <div></div>
                         <label>Email: {users.currentManagedUser.email}</label>
                         <div></div>
                         <div className="big ui label">

@@ -1,7 +1,7 @@
 import React from 'react'
 import EditTicketModal from './EditTicketModal'
 import { useDispatch } from 'react-redux'
-import { handleRemoveProjectTicket, handleRemoveTicket } from '../actions'
+import { handleRemoveProjectTicket, handleTickets } from '../actions'
     // t.integer "user_id"
 //     t.integer "project_id"
 //     t.string "title"
@@ -29,7 +29,7 @@ function ProjectTicketCard(props) {
             <div className="ui divider"></div>
             <button onClick={()=> {
                                     dispatch(handleRemoveProjectTicket(props.ticket,props.project))
-                                    // dispatch(handleRemoveTicket(props.ticket))
+                                    dispatch(handleTickets)
                                     }} className="mini ui left floated red button">Remove Ticket</button>
             </div>
             :

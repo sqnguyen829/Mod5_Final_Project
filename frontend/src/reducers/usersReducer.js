@@ -33,14 +33,12 @@ const usersReducer = (state = initialState, action) => {
                 loadUsers:true
             }
         case 'VALID_SIGN_UP':
-            console.log(action.validData)
             return {
                 ...state,
                 signUpValidation:action.validData,
                 clearValidation:true
             }
         case 'CLEAR_USER_VALIDATION':
-            console.log(action.payload)
             return {
                 ...state,
                 signUpValidation:action.payload,
