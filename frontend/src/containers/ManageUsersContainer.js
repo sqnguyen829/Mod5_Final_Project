@@ -21,18 +21,25 @@ function ManageUsersContainer(props) {
                         <div></div>
                         <label>Email: {users.currentManagedUser.email}</label>
                         <div></div>
-                        <div className="big ui label">
-                          Role
-                        </div>
-                        <select onChange={(e, defaultValue)=> defaultValue=e.target.value} defaultValue = 'N/A' className="mini ui dropdown">
-                            <option value="admin">admin</option>
-                            <option value="manager">manager</option>
-                            <option value="developer">developer</option>
-                            <option value="submitter">submitter</option>
-                            <option value="N/A">N/A</option>
-                        </select>
+                        {
+                            users.currentManagedUser.role==='admin'? '' 
+                            :
+                            <div className="big ui label">Role</div>
+                        }
+                        {users.currentManagedUser.role==='admin'? '' : 
+                            <select onChange={(e, defaultValue)=> defaultValue=e.target.value} defaultValue = 'N/A' className="mini ui dropdown">
+                                {/* <option value="admin">admin</option> */}
+                                <option value="manager">manager</option>
+                                <option value="developer">developer</option>
+                                <option value="submitter">submitter</option>
+                                <option value="N/A">N/A</option>
+                            </select>
+                        }
                         <div></div>
+                        {users.currentManagedUser.role==='admin'? ''
+                        :
                         <button className="mini ui blue button" type='submit' > Confirm Change</button>
+                        }
                         </form>
                     </div>
                     :
