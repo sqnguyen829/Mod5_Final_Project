@@ -19,6 +19,9 @@ const ticketsReducer = (state = initialState, action) => {
                 tickets:[...state.tickets, action.ticket],
                 displayTickets:[...state.displayTickets, action.ticket]
             }
+        ////This was removed because the new ticket that was created while in the project show page was not storing the id of 
+        ////that ticket therefore I couldn't check the IDs to remove it. So I just called the ticket fetch function to get the 
+        ////new ticket DB after deleting the ticket
         // case 'REMOVE_TICKET':
         //     console.log(action.ticket)
         //     console.log(state.displayTickets)
