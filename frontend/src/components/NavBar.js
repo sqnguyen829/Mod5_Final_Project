@@ -26,15 +26,15 @@ function NavBar(props) {
                     <div className="item">One more separated link</div>
                 </div>
             </div>
-            <div className='ui black label'>
-                    User Role: {localStorage.role}
-            </div>
             <div className="right menu">
-                <div className="item">
+                {/* <div className="item">
                     <div className="ui transparent inverted icon input">
                         <i className="search icon"></i>
                         <input type="text" placeholder="Search"></input>
                     </div>
+                </div> */}
+                <div className="item">
+                    User Role: {localStorage.role}
                 </div>
                 <div className="item" onClick={()=>
                     {
