@@ -64,7 +64,7 @@ export const handleValidation = (e, validationData) => {
 export const validateForm = (errors) => {
     let valid = true;
     Object.values(errors).forEach(
-      // if we have an error string set valid to false
+      // if there is an error string set valid to false
       (val) => val.length > 0 && (valid = false)
     )
     return valid;
@@ -92,7 +92,6 @@ export const handleNewUser = (e, errors, props) => {
         })
         .then(res=>res.json())
         .then(newUserData => {
-            console.log(newUserData)
             if(newUserData.error !== 'Username or email has been taken.'){
                 props.history.push('/login')
                 if(localStorage.errorMsg){
@@ -417,18 +416,18 @@ export const handleNewTicket = (e,project) => {
                     type_of_ticket:e.target[2].value,
                     priority:e.target[3].value,
                     project
-
     }}
 }
 
-export const handleRemoveTicket = (ticket) => {
-    return {type:'REMOVE_TICKET', ticket}
-}
+// export const handleRemoveTicket = (ticket) => {
+//     console.log(ticket)
+//     debugger
+//     return {type:'REMOVE_TICKET', ticket}
+// }
 
 /////////////////////////////////////////////////Ticket FN END//////////////////////////////////////////
 
 export const login = (obj,history, dispatch) => {
-    console.log('login')
     fetch("http://localhost:3000/api/v1/login", {
         method: 'POST',
         headers:{

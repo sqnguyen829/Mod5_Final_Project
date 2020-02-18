@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from 'react-redux'
 function Signup(props) {
     const users = useSelector(state => state.users)
     const dispatch = useDispatch()
-    console.log(users)
     return(
         <div className="ui inverted segment">
             <div className="ui inverted form">
