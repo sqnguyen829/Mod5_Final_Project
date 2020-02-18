@@ -7,10 +7,10 @@ function ManageUsersContainer(props) {
     const users = useSelector(state=> state.users)
     const dispatch = useDispatch()
     return(
-        <div className="ui grid container">
+        <div className="ui grid container" >
         <div className="ui grid">
             <div className="column row">
-                <div className="ui raised very padded text container segment">
+                <div className="ui raised very padded text container segment" style ={{background:'#d4d4d4'}}>
                     {users.currentManagedUser?
                     <div>
                         <form onSubmit = {(e)=> dispatch(handleUserRole(e, users.currentManagedUser))}>
@@ -51,7 +51,7 @@ function ManageUsersContainer(props) {
             </div>
             <div className="three wide column">
                 <div className="ui card" style={{overflow:"scroll",height:'20em'}}>
-                    <div className="ui middle aligned animated list">
+                    <div className="ui middle aligned animated list" style ={{background:'#d4d4d4'}}>
                         {users.loadUsers? users.displayUsers.map(user => <UserRow user={user} key={user.id}/>) : ''}
                     </div>
                 </div>
