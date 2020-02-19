@@ -6,7 +6,7 @@ function CreateTicketModal(props) {
     const dispatch = useDispatch()
     return(
         <Modal trigger={<Button color='blue' size='mini'>Add a Ticket</Button>} >
-            <div>
+            <div style ={{background:'#cad7ed'}}>
                 <form  onSubmit={(e)=> {dispatch(handleNewProjectTicket(e,props.project))
                                         dispatch(handleNewTicket(e,props.project))}} className='ui form' >
                     <div className="two fields">

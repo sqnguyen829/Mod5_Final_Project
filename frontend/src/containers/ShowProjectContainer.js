@@ -28,7 +28,7 @@ function ShowProjectContainer(props) {
                                 <h5 className="mini ui right floated segment" style ={{background:'#dfe4ed'}}>Status: {project.status}</h5>
                                 { (localStorage.role==='admin'|| localStorage.role==='manager')?
                                 <Modal trigger={<Button color='blue' size='mini'>Edit</Button>}  >
-                                        <div>
+                                        <div style ={{background:'#9dbefc'}}>
                                         <form  onSubmit={(e)=> {dispatch(handleEditProject(e,project,projects))
                                                                 props.history.push(`/home/projects/${project.id}`)}} className='ui form' >
                                             <div className="two fields">
