@@ -5,7 +5,7 @@ import {useDispatch } from 'react-redux'
 function AddProjectForm(props) {
     const dispatch = useDispatch()
     return(
-        <div>
+        <div >
             <form  onSubmit={(e)=> {dispatch(handleNewProject(e))
                                     props.history.push("/home/projects")}} className='ui form' >
                 <div className="two fields">
@@ -20,6 +20,62 @@ function AddProjectForm(props) {
                 </div>
                 <button className="ui blue button" type="submit">Create Project</button>
             </form>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                </div>
+            </div>
         </div>
     )
 }
