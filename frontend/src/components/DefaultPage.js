@@ -35,9 +35,18 @@ function DefaultPage() {
                 <div class="ui inverted horizontal divider">
                     To Continue with the app please head to the login page
                 </div>
-                <Link to = {'/login'}>
-                    <button className="ui grey button" type="login"  > Login</button>
-                </Link> 
+                {localStorage.token? 
+                    <div>
+                        <label>Currently logged in</label>
+                        <Link to = {'/home'}>
+                            <button className="ui grey button" type="home"  > Home page</button>
+                        </Link> 
+                    </div>
+                :
+                    <Link to = {'/login'}>
+                        <button className="ui grey button" type="login"  > Login</button>
+                    </Link> 
+                }
                 <h4 class="ui inverted">Created by Steven Nguyen</h4>
             </div>
         </div>
