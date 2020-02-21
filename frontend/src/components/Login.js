@@ -48,6 +48,9 @@ function Login(props) {
                 <div className="ui message">
                     Join the Team <Link to = {'/signup'}> Sign up </Link> 
                 </div>
+                <div >
+                    Go to app <Link to = {'/'}> Descriptions </Link> 
+                </div>
             </div>
         </div>
     )
